@@ -6,3 +6,14 @@
 
 // modules
 @import 'module/*';
+
+@font-face {
+    font-family: 'digital-7';
+    src: url('../font/digital-7_mono_italic.ttf') format('truetype')
+}
+
+html,
+body,
+.wrapper{
+    height: 100%;
+}
