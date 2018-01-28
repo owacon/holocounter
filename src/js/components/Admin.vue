@@ -2,7 +2,7 @@
 .admin
     input(type="submit" value="リセット" v-on:click="resetHeleCount")
     input(type="submit" value="ストップ" v-if="heleData.isActive" v-on:click="stopHeleCount")
-    input(type="submit" value="スタート" v-if="!heleData.isActive" v-on:click="startHeleCount")
+    input(type="submit" value="スタート" v-else="heleData.isActive" v-on:click="startHeleCount")
 </template>
 
 <style lang="scss" scoped>

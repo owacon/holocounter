@@ -9858,7 +9858,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('input',{attrs:{"type":"submit","value":"リセット"},on:{"click":_vm.resetHeleCount}}),(_vm.heleData.isActive)?_c('input',{attrs:{"type":"submit","value":"ストップ"},on:{"click":_vm.stopHeleCount}}):_vm._e(),(!_vm.heleData.isActive)?_c('input',{attrs:{"type":"submit","value":"スタート"},on:{"click":_vm.startHeleCount}}):_vm._e()])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('input',{attrs:{"type":"submit","value":"リセット"},on:{"click":_vm.resetHeleCount}}),(_vm.heleData.isActive)?_c('input',{attrs:{"type":"submit","value":"ストップ"},on:{"click":_vm.stopHeleCount}}):_c('input',{attrs:{"type":"submit","value":"スタート"},on:{"click":_vm.startHeleCount}})])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-2efafaba"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -9868,7 +9868,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-2efafaba", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2efafaba", __vue__options__)
+    hotAPI.rerender("data-v-2efafaba", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28}],32:[function(require,module,exports){
@@ -9923,7 +9923,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28,"vueify/lib/insert-css":30}],33:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".root[data-v-68332284] {\n  width: 100%;\n  height: 100%;\n  position: relative; }\n\n.hele_button[data-v-68332284] {\n  width: 70%;\n  height: 70%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(-50%) translateX(-50%);\n  background-color: #444; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".root[data-v-68332284] {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  background-color: #000; }\n\n.hele_button[data-v-68332284] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(-50%) translateX(-50%); }\n  .hele_button_cap[data-v-68332284] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-68332284] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-68332284] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }")
 ;(function(){
 "use strict";
 
@@ -9940,6 +9940,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var heleSound = void 0;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
+
+var hele_button_cap = void 0;
 
 exports.default = {
   name: "root",
@@ -9986,22 +9988,27 @@ exports.default = {
     incrementHele: function incrementHele() {
       if (this.heleData.isActive) {
         this.playSound();
+        hele_button_cap.setAttribute('data-push', 'true');
         var addHele = this.heleData.heleCount;
         addHele++;
         firebase.database().ref("hele").set(addHele);
       }
+      setTimeout(function () {
+        hele_button_cap.setAttribute('data-push', 'false');
+      }, 80);
     }
   },
   mounted: function mounted() {
     this.getSound("./sound/hele.mp3");
     this.getFirebaseData();
+    hele_button_cap = document.querySelector(".hele_button_cap");
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"root"},[_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}})])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"root"},[_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})])])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-68332284"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
