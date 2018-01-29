@@ -105,16 +105,23 @@ export default {
     incrementHele() {
       if (this.heleData.isActive) {
         this.playSound();
-        hele_button_cap.setAttribute('data-push', 'true');
-        let addHele = this.heleData.heleCount;
-        addHele++;
-        firebase
-          .database()
-          .ref(`hele`)
-          .set(addHele);
+        hele_button_cap.setAttribute("data-push", "true");
+        // let addHele = this.heleData.heleCount;
+        // addHele++;
+        // firebase
+        //   .database()
+        //   .ref(`hele`)
+        //   .set(addHele);
+        const databaseRef = firebase.database().ref(`hele`);
+        databaseRef.transaction(function(searches) {
+          if (searches) {
+            searches = searches + 1;
+          }
+          return searches;
+        });
       }
-      setTimeout(function (){
-        hele_button_cap.setAttribute('data-push', 'false');
+      setTimeout(function() {
+        hele_button_cap.setAttribute("data-push", "false");
       }, 80);
     }
   },

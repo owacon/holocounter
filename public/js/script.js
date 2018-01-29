@@ -9868,7 +9868,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-2efafaba", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-2efafaba", __vue__options__)
+    hotAPI.reload("data-v-2efafaba", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28}],32:[function(require,module,exports){
@@ -9919,7 +9919,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-8162d060", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-8162d060", __vue__options__)
+    hotAPI.reload("data-v-8162d060", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28,"vueify/lib/insert-css":30}],33:[function(require,module,exports){
@@ -9988,13 +9988,18 @@ exports.default = {
     incrementHele: function incrementHele() {
       if (this.heleData.isActive) {
         this.playSound();
-        hele_button_cap.setAttribute('data-push', 'true');
-        var addHele = this.heleData.heleCount;
-        addHele++;
-        firebase.database().ref("hele").set(addHele);
+        hele_button_cap.setAttribute("data-push", "true");
+
+        var databaseRef = firebase.database().ref("hele");
+        databaseRef.transaction(function (searches) {
+          if (searches) {
+            searches = searches + 1;
+          }
+          return searches;
+        });
       }
       setTimeout(function () {
-        hele_button_cap.setAttribute('data-push', 'false');
+        hele_button_cap.setAttribute("data-push", "false");
       }, 80);
     }
   },
