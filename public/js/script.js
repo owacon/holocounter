@@ -9872,7 +9872,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28}],32:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".counter[data-v-8162d060] {\n  width: 100%;\n  height: 100%; }\n  .counter_bg[data-v-8162d060] {\n    width: 100%;\n    height: 100%;\n    background: linear-gradient(#168bba, #36b9d7, #a8e7fa);\n    position: relative; }\n  .counter_frame[data-v-8162d060] {\n    width: 1000px;\n    height: 718px;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translateY(-50%) translateX(-50%);\n    background-image: url(\"./img/frame1.png\");\n    background-size: contain;\n    background-position: center;\n    background-repeat: no-repeat; }\n  .counter_number[data-v-8162d060] {\n    font-family: \"digital-7\";\n    font-size: 400px;\n    color: white;\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translateY(-50%) translateX(-50%);\n    width: 80%;\n    text-align: center; }\n  .counter_hele[data-v-8162d060] {\n    color: white;\n    font-size: 80px;\n    font-weight: bold;\n    position: absolute;\n    bottom: 130px;\n    right: 200px; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".counter[data-v-8162d060] {\n  width: 100%;\n  height: 100%; }\n  .counter_bg[data-v-8162d060] {\n    width: 100%;\n    height: 100%;\n    background: linear-gradient(#168bba, #36b9d7, #a8e7fa);\n    position: relative; }\n  .counter_frame[data-v-8162d060] {\n    width: 1000px;\n    height: 718px;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translateY(-50%) translateX(-50%);\n    background-image: url(\"./img/frame2.png\");\n    background-size: contain;\n    background-position: center;\n    background-repeat: no-repeat; }\n  .counter_number[data-v-8162d060] {\n    font-family: \"digital-7\";\n    font-size: 400px;\n    color: white;\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translateY(-50%) translateX(-50%);\n    width: 80%;\n    text-align: center; }\n    .counter_number_shadow[data-v-8162d060] {\n      color: rgba(128, 128, 128, 0.2); }\n  .counter_hele[data-v-8162d060] {\n    color: white;\n    font-size: 80px;\n    font-weight: bold;\n    position: absolute;\n    bottom: 130px;\n    right: 200px; }")
 ;(function(){
 "use strict";
 
@@ -9889,6 +9889,13 @@ exports.default = {
     };
   },
 
+  computed: {
+    counterLength: function counterLength() {
+      var data = this.heleData.heleCount.toString();
+      var digit = data.length;
+      return digit;
+    }
+  },
   methods: {
     getFirebaseData: function getFirebaseData() {
       var _this = this;
@@ -9908,7 +9915,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_vm._m(0),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_vm._m(0),(_vm.counterLength == 1)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("888")]):_vm._e(),(_vm.counterLength == 4)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8888")]):_vm._e(),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter_frame"},[_c('div',{staticClass:"counter_hele"},[_vm._v("へぇ")])])}]
 __vue__options__._scopeId = "data-v-8162d060"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -9919,7 +9926,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-8162d060", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8162d060", __vue__options__)
+    hotAPI.rerender("data-v-8162d060", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":28,"vueify/lib/insert-css":30}],33:[function(require,module,exports){
@@ -9992,7 +9999,7 @@ exports.default = {
 
         var databaseRef = firebase.database().ref("hele");
         databaseRef.transaction(function (searches) {
-          if (searches) {
+          if (searches !== undefined) {
             searches = searches + 1;
           }
           return searches;

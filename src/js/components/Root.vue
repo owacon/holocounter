@@ -114,7 +114,7 @@ export default {
         //   .set(addHele);
         const databaseRef = firebase.database().ref(`hele`);
         databaseRef.transaction(function(searches) {
-          if (searches) {
+          if (searches !== undefined) {
             searches = searches + 1;
           }
           return searches;
