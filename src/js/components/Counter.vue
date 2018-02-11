@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: "root",
+  name: "counter",
   data() {
     return {
       heleData: {

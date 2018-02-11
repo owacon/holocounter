@@ -24,7 +24,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <div id="root"></div>
+      <div id="root">
+        <router-view></router-view>
+      </div>
     </div>
     <!-- javascript-->
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -40,6 +42,6 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src="/js/script.js?v=5"></script>
+    <script src="/js/script.js?v=6"></script>
   </body>
 </html>

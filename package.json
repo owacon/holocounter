@@ -51,6 +51,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.17.1"
+    "axios": "^0.17.1",
+    "vue-router": "^3.0.1"
   }
 }
