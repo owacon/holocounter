@@ -22,8 +22,14 @@
     position: relative;
   }
   &_frame {
-    width: 1000px;
-    height: 718px;
+    @include pc-layout {
+      width: 1000px;
+      height: 718px;
+    }
+    @include sp-layout {
+      width: 500px;
+      height: 359px;
+    }
     position: absolute;
     top: 50%;
     left: 50%;
@@ -35,7 +41,12 @@
   }
   &_number {
     font-family: "digital-7";
-    font-size: 400px;
+    @include pc-layout {
+      font-size: 400px;
+    }
+    @include sp-layout {
+      font-size: 200px;
+    }
     color: white;
     // background-color: #000;
     display: block;
@@ -51,11 +62,18 @@
   }
   &_hele {
     color: white;
-    font-size: 80px;
     font-weight: bold;
     position: absolute;
-    bottom: 130px;
-    right: 200px;
+    @include pc-layout {
+      font-size: 80px;
+      bottom: 130px;
+      right: 200px;
+    }
+    @include sp-layout {
+      font-size: 40px;
+      bottom: 65px;
+      right: 100px;
+    }
   }
 }
 </style>
@@ -70,7 +88,7 @@ export default {
       }
     };
   },
-  computed:{
+  computed: {
     counterLength: function() {
       const data = this.heleData.heleCount.toString();
       const digit = data.length;
