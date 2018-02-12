@@ -13443,7 +13443,6 @@ exports.default = {
           _this.$set(_this.heleData, "heleCount", snapshot.val());
         }
         if (snapshot.val() === 0) {
-          console.log("reset");
           _this.heleData.ownHeleCount = 0;
         }
       });

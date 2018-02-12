@@ -47,7 +47,6 @@ export default {
             this.$set(this.heleData, "heleCount", snapshot.val());
           }
           if (snapshot.val() === 0) {
-            console.log("reset");
             this.heleData.ownHeleCount = 0;
           }
         });
