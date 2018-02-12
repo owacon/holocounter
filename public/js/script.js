@@ -13252,7 +13252,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".hele_own_count[data-v-0bc86c38] {\n  font-family: \"digital-7\";\n  font-size: 150px;\n  color: white;\n  display: block;\n  position: absolute;\n  top: 10px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 80%;\n  text-align: center; }\n  .hele_own_count_shadow[data-v-0bc86c38] {\n    color: rgba(128, 128, 128, 0.3); }\n  .hele_own_count_bg[data-v-0bc86c38] {\n    position: absolute;\n    width: 70%;\n    height: 150px;\n    background-color: black;\n    top: 40px;\n    left: 50%;\n    transform: translateX(-50%);\n    border-radius: 15px; }\n\n.hele_button[data-v-0bc86c38] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(-10%) translateX(-50%);\n  -webkit-tap-highlight-color: transparent; }\n  .hele_button_cap[data-v-0bc86c38] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-0bc86c38] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-0bc86c38] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }\n  .hele_button_flash[data-v-0bc86c38] {\n    background-image: url(\"./img/hele_flash3.png\");\n    background-size: contain;\n    background-position: center;\n    width: 640px;\n    height: 640px;\n    left: 50%;\n    top: 50%;\n    position: absolute;\n    transform: translateX(-50%) translateY(-42%);\n    display: none;\n    pointer-events: none; }\n    .hele_button_flash[data-push=\"true\"][data-v-0bc86c38] {\n      display: block;\n      animation: flash 0.8s ease 0s;\n      animation-fill-mode: forwards; }\n\n@keyframes flash {\n  0% {\n    opacity: 0; }\n  10% {\n    opacity: 0.3; }\n  90% {\n    opacity: 0.3; }\n  100% {\n    opacity: 0; } }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".hele_own_count[data-v-0bc86c38] {\n  font-family: \"digital-7\";\n  font-size: 150px;\n  color: white;\n  display: block;\n  position: absolute;\n  top: 10px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 80%;\n  text-align: center; }\n  .hele_own_count[data-ismax=\"true\"][data-v-0bc86c38] {\n    color: red; }\n  .hele_own_count_shadow[data-v-0bc86c38] {\n    color: rgba(128, 128, 128, 0.3); }\n  .hele_own_count_bg[data-v-0bc86c38] {\n    position: absolute;\n    width: 70%;\n    height: 150px;\n    background-color: black;\n    top: 40px;\n    left: 50%;\n    transform: translateX(-50%);\n    border-radius: 15px; }\n\n.hele_button[data-v-0bc86c38] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(-10%) translateX(-50%);\n  -webkit-tap-highlight-color: transparent; }\n  .hele_button_cap[data-v-0bc86c38] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-0bc86c38] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-0bc86c38] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }\n  .hele_button_flash[data-v-0bc86c38] {\n    background-image: url(\"./img/hele_flash3.png\");\n    background-size: contain;\n    background-position: center;\n    width: 640px;\n    height: 640px;\n    left: 50%;\n    top: 50%;\n    position: absolute;\n    transform: translateX(-50%) translateY(-42%);\n    display: none;\n    pointer-events: none; }\n    .hele_button_flash[data-push=\"true\"][data-v-0bc86c38] {\n      display: block;\n      animation: flash 0.8s ease 0s;\n      animation-fill-mode: forwards; }\n\n@keyframes flash {\n  0% {\n    opacity: 0; }\n  10% {\n    opacity: 0.3; }\n  90% {\n    opacity: 0.3; }\n  100% {\n    opacity: 0; } }")
 ;(function(){
 "use strict";
 
@@ -13277,6 +13277,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
 
 var pushAnimationDom = void 0;
+var countNumDom = void 0;
 
 exports.default = {
   name: "hele-button",
@@ -13351,42 +13352,42 @@ exports.default = {
     },
     incrementHele: function incrementHele() {
       if (this.heleData.isActive) {
-        this.playSound();
-        if (this.heleData.ownHeleCount < 999) {
+        if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
+          this.playSound();
           this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
-        }
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
 
-        try {
-          for (var _iterator2 = (0, _getIterator3.default)(pushAnimationDom), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var val = _step2.value;
-
-            val.setAttribute("data-push", "true");
-          }
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
           try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
-          }
-        }
+            for (var _iterator2 = (0, _getIterator3.default)(pushAnimationDom), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var val = _step2.value;
 
-        var databaseRef = firebase.database().ref("hele");
-        databaseRef.transaction(function (searches) {
-          if (searches !== undefined) {
-            searches = searches + 1;
+              val.setAttribute("data-push", "true");
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
           }
-          return searches;
-        });
+
+          var databaseRef = firebase.database().ref("hele");
+          databaseRef.transaction(function (searches) {
+            if (searches !== undefined) {
+              searches = searches + 1;
+            }
+            return searches;
+          });
+        }
       }
       setTimeout(function () {
         var _iteratorNormalCompletion3 = true;
@@ -13416,17 +13417,28 @@ exports.default = {
       }, 80);
     }
   },
+  watch: {
+    "heleData.ownHeleCount": function heleDataOwnHeleCount() {
+      console.log(countNumDom.getAttribute("data-isMax"));
+      if (this.heleData.defaultMax == this.heleData.ownHeleCount) {
+        countNumDom.setAttribute("data-isMax", "true");
+      } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
+        countNumDom.setAttribute("data-isMax", "false");
+      }
+    }
+  },
   mounted: function mounted() {
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
+    countNumDom = document.querySelector(".js-isMax");
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('div',{staticClass:"hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count"},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('div',{staticClass:"hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count js-isMax",attrs:{"data-isMax":"false"}},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-0bc86c38"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13472,6 +13484,7 @@ exports.default = {
         heleCount: "Loading...",
         isActive: false,
         isCongrats: false,
+        defaultMax: 20,
         limit: {
           isLimited: false,
           max: 20
@@ -13529,7 +13542,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-68332284", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-68332284", __vue__options__)
+    hotAPI.reload("data-v-68332284", __vue__options__)
   }
 })()}
 },{"./Admin.vue":85,"./HeleButton.vue":87,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],89:[function(require,module,exports){

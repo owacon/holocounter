@@ -4,7 +4,7 @@
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
-  .hele_own_count {{ heleData.ownHeleCount }}
+  .hele_own_count.js-isMax(data-isMax='false') {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
     .hele_button_cap.js-push(data-push='false')
     .hele_button_base
@@ -25,6 +25,9 @@
   transform: translateX(-50%);
   width: 80%;
   text-align: center;
+  &[data-ismax="true"] {
+    color: red;
+  }
   &_shadow {
     color: rgba(gray, 0.3);
   }
@@ -81,8 +84,8 @@
     pointer-events: none;
     &[data-push="true"] {
       display: block;
-        animation: flash 0.8s ease 0s;
-        animation-fill-mode: forwards;
+      animation: flash 0.8s ease 0s;
+      animation-fill-mode: forwards;
     }
   }
 }
@@ -119,6 +122,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const context = new AudioContext();
 
 let pushAnimationDom;
+let countNumDom;
 
 export default {
   name: "hele-button",
@@ -179,20 +183,20 @@ export default {
 
     incrementHele() {
       if (this.heleData.isActive) {
-        this.playSound();
-        if (this.heleData.ownHeleCount < 999) {
+        if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
+          this.playSound();
           this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
-        }
-        for (let val of pushAnimationDom) {
-          val.setAttribute("data-push", "true");
-        }
-        const databaseRef = firebase.database().ref(`hele`);
-        databaseRef.transaction(function(searches) {
-          if (searches !== undefined) {
-            searches = searches + 1;
+          for (let val of pushAnimationDom) {
+            val.setAttribute("data-push", "true");
           }
-          return searches;
-        });
+          const databaseRef = firebase.database().ref(`hele`);
+          databaseRef.transaction(function(searches) {
+            if (searches !== undefined) {
+              searches = searches + 1;
+            }
+            return searches;
+          });
+        }
       }
       setTimeout(function() {
         for (let val of pushAnimationDom) {
@@ -201,10 +205,22 @@ export default {
       }, 80);
     }
   },
+  watch: {
+    "heleData.ownHeleCount": function() {
+      console.log(countNumDom.getAttribute("data-isMax"));
+      if (this.heleData.defaultMax == this.heleData.ownHeleCount) {
+        countNumDom.setAttribute("data-isMax", "true");
+      }
+      else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
+        countNumDom.setAttribute("data-isMax", "false");
+      }
+    }
+  },
   mounted: function() {
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
+    countNumDom = document.querySelector(".js-isMax");
   }
 };
 </script>
