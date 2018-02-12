@@ -6,8 +6,9 @@
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
   .hele_own_count {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
-    .hele_button_cap(data-push='false')
+    .hele_button_cap.js-push(data-push='false')
     .hele_button_base
+  .hele_button_flash.js-push(data-push='false')
 </template>
 
 <style lang="scss" scoped>
@@ -66,6 +67,39 @@
     background-position: center;
     position: relative;
   }
+  &_flash {
+    background-image: url("./img/hele_flash3.png");
+    background-size: contain;
+    background-position: center;
+    width: 1280*0.5px;
+    height: 1280*0.5px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-42%);
+    display: none;
+    pointer-events: none;
+    &[data-push="true"] {
+      display: block;
+        animation: flash 0.8s ease 0s;
+        animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style>
 
@@ -84,7 +118,7 @@ let heleSound;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const context = new AudioContext();
 
-let hele_button_cap;
+let pushAnimationDom;
 
 export default {
   name: "hele-button",
@@ -134,10 +168,10 @@ export default {
         source.buffer = heleSound;
         source.connect(context.destination);
         source.start(0);
-      }
-      else if (this.heleData.isCongrats){
+      } else if (this.heleData.isCongrats) {
         const source = context.createBufferSource();
-        source.buffer = omedetouSounds[Math.floor(Math.random() * omedetouSounds.length)];
+        source.buffer =
+          omedetouSounds[Math.floor(Math.random() * omedetouSounds.length)];
         source.connect(context.destination);
         source.start(0);
       }
@@ -149,7 +183,9 @@ export default {
         if (this.heleData.ownHeleCount < 999) {
           this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
         }
-        hele_button_cap.setAttribute("data-push", "true");
+        for (let val of pushAnimationDom) {
+          val.setAttribute("data-push", "true");
+        }
         const databaseRef = firebase.database().ref(`hele`);
         databaseRef.transaction(function(searches) {
           if (searches !== undefined) {
@@ -159,14 +195,16 @@ export default {
         });
       }
       setTimeout(function() {
-        hele_button_cap.setAttribute("data-push", "false");
+        for (let val of pushAnimationDom) {
+          val.setAttribute("data-push", "false");
+        }
       }, 80);
     }
   },
   mounted: function() {
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSoundss(omedetouPath);
-    hele_button_cap = document.querySelector(".hele_button_cap");
+    pushAnimationDom = document.querySelectorAll(".js-push");
   }
 };
 </script>
