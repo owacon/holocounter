@@ -30,7 +30,7 @@ export default {
         heleCount: "Loading...",
         isActive: false,
         isCongrats: false,
-          defaultMax: 20,
+          defaultMax: 999,
         limit: {
           isLimited: false,
           max: 20,
