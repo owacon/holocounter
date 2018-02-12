@@ -3,7 +3,7 @@
     .div1
         input(type="submit" value="リセット" v-on:click="resetHeleCount")
         input(type="submit" value="ストップ" v-if="heleData.isActive" v-on:click="stopHeleCount")
-        input(type="submit" value="スタート" v-else="heleData.isActive" v-on:click="startHeleCount")
+        input(type="submit" value="スタート" v-else v-on:click="startHeleCount")
     .div2 へぇ制限:
         form
             input(type="text" name="limit" size="4" maxlength="4" v-model='heleData.limit.max')
@@ -11,7 +11,9 @@
             label(for="off") off
             input(type="radio" id='on' value="true" v-model='heleData.limit.isLimited' v-on:change='toggleHeleLimit')
             label(for="on") on
-
+    .div3 おめでとう:
+        input(type="submit" value="on" v-if="!heleData.isCongrats" v-on:click="toggleCongrats")
+        input(type="submit" value="off" v-else v-on:click="toggleCongrats")
 </template>
 
 <style lang="scss" scoped>
@@ -27,36 +29,10 @@
 export default {
   name: "admin",
   data() {
-    return {
-      heleData: {
-        isActive: false,
-        limit: {
-          isLimited: false,
-          max: 20
-        }
-      }
-    };
+    return {};
   },
-  props: ["rootData"],
+  props: ["heleData"],
   methods: {
-    getFirebaseData() {
-      firebase
-        .database()
-        .ref("isActive")
-        .on("value", snapshot => {
-          if (snapshot.exists()) {
-            this.$set(this.heleData, "isActive", snapshot.val());
-          }
-        });
-      firebase
-        .database()
-        .ref("limit")
-        .on("value", snapshot => {
-          if (snapshot.exists()) {
-            this.$set(this.heleData, "limit", snapshot.val());
-          }
-        });
-    },
     resetHeleCount() {
       firebase
         .database()
@@ -92,10 +68,22 @@ export default {
       //       .set(false);
       //       console.log(e.target);
       //   }
+    },
+    toggleCongrats() {
+      if (this.heleData.isCongrats) {
+        firebase
+          .database()
+          .ref("isCongrats")
+          .set(false);
+      }
+      else if(!this.heleData.isCongrats) {
+        firebase
+          .database()
+          .ref("isCongrats")
+          .set(true);
+      }
     }
   },
-  mounted: function() {
-    this.getFirebaseData();
-  }
+  mounted: function() {}
 };
 </script>

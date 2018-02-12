@@ -1,6 +1,6 @@
 <template lang="pug">
 .root
-  router-view(:rootData='this.rootData')
+  router-view(:heleData='this.heleData')
 </template>
 
 <style lang="scss" scoped>
@@ -24,13 +24,61 @@ export default {
   },
   data() {
     return {
-      rootData: {
-        ownHeleCount: 0
+      heleData: {
+        ownHeleCount: 0,
+        heleCount: "Loading...",
+        isActive: false,
+        isCongrats: false,
+        limit: {
+          isLimited: false,
+          max: 20
+        }
       }
     };
   },
   computed: {},
-  methods: {},
-  mounted: function() {}
+  methods: {
+    getFirebaseData() {
+      firebase
+        .database()
+        .ref("hele")
+        .on("value", snapshot => {
+          if (snapshot.exists()) {
+            this.$set(this.heleData, "heleCount", snapshot.val());
+          }
+          if (snapshot.val() === 0) {
+            console.log("reset");
+            this.heleData.ownHeleCount = 0;
+          }
+        });
+      firebase
+        .database()
+        .ref("isActive")
+        .on("value", snapshot => {
+          if (snapshot.exists()) {
+            this.$set(this.heleData, "isActive", snapshot.val());
+          }
+        });
+      firebase
+        .database()
+        .ref("limit")
+        .on("value", snapshot => {
+          if (snapshot.exists()) {
+            this.$set(this.heleData, "limit", snapshot.val());
+          }
+        });
+      firebase
+        .database()
+        .ref("isCongrats")
+        .on("value", snapshot => {
+          if (snapshot.exists()) {
+            this.$set(this.heleData, "isCongrats", snapshot.val());
+          }
+        });
+    }
+  },
+  mounted: function() {
+    this.getFirebaseData();
+  }
 };
 </script>

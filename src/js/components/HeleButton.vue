@@ -4,7 +4,7 @@
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
-  .hele_own_count {{ rootData.ownHeleCount }}
+  .hele_own_count {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
     .hele_button_cap(data-push='false')
     .hele_button_base
@@ -36,7 +36,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 15px;
-}
+  }
 }
 .hele_button {
   width: 100%;
@@ -45,7 +45,7 @@
   top: 50%;
   left: 50%;
   transform: translateY(-10%) translateX(-50%);
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   &_cap {
     width: 430*0.5px;
     height: 206*0.5px;
@@ -72,6 +72,14 @@
 <script>
 import axios from "axios";
 
+const omedetouPath = [
+  "./sound/omedetou/misato.mp3",
+  "./sound/omedetou/asuka.mp3",
+  "./sound/omedetou/rei.mp3",
+  "./sound/omedetou/kensuke.mp3",
+  "./sound/omedetou/touji.mp3"
+];
+const omedetouSounds = [];
 let heleSound;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const context = new AudioContext();
@@ -81,27 +89,18 @@ let hele_button_cap;
 export default {
   name: "hele-button",
   data() {
-    return {
-      heleData: {
-        heleCount: "Loading...",
-        isActive: false,
-        limit: {
-          isLimited: false,
-          max: 20
-        }
-      }
-    };
+    return {};
   },
-  props: ["rootData"],
+  props: ["heleData"],
   computed: {
     counterLength: function() {
-      const data = this.rootData.ownHeleCount.toString();
+      const data = this.heleData.ownHeleCount.toString();
       const digit = data.length;
       return digit;
     }
   },
   methods: {
-    getSound(path, buffer) {
+    getHeleSound(path, buffer) {
       axios
         .get(path, { responseType: "arraybuffer" })
         .then(response => {
@@ -114,47 +113,41 @@ export default {
           console.log("err:", err);
         });
     },
+    getOmedetouSoundss(array, buffer) {
+      for (let path of omedetouPath) {
+        axios
+          .get(path, { responseType: "arraybuffer" })
+          .then(response => {
+            const sound = response.data;
+            context.decodeAudioData(sound, function(buf) {
+              omedetouSounds.push(buf);
+            });
+          })
+          .catch(err => {
+            console.log("err:", err);
+          });
+      }
+    },
     playSound() {
-      const source = context.createBufferSource();
-      source.buffer = heleSound;
-      source.connect(context.destination);
-      source.start(0);
+      if (!this.heleData.isCongrats) {
+        const source = context.createBufferSource();
+        source.buffer = heleSound;
+        source.connect(context.destination);
+        source.start(0);
+      }
+      else if (this.heleData.isCongrats){
+        const source = context.createBufferSource();
+        source.buffer = omedetouSounds[Math.floor(Math.random() * omedetouSounds.length)];
+        source.connect(context.destination);
+        source.start(0);
+      }
     },
-    getFirebaseData() {
-      firebase
-        .database()
-        .ref("hele")
-        .on("value", snapshot => {
-          if (snapshot.exists()) {
-            this.$set(this.heleData, "heleCount", snapshot.val());
-          }
-          if (snapshot.val() === 0) {
-            console.log("reset");
-            this.rootData.ownHeleCount = 0;
-          }
-        });
-      firebase
-        .database()
-        .ref("isActive")
-        .on("value", snapshot => {
-          if (snapshot.exists()) {
-            this.$set(this.heleData, "isActive", snapshot.val());
-          }
-        });
-      firebase
-        .database()
-        .ref("limit")
-        .on("value", snapshot => {
-          if (snapshot.exists()) {
-            this.$set(this.heleData, "limit", snapshot.val());
-          }
-        });
-    },
+
     incrementHele() {
       if (this.heleData.isActive) {
         this.playSound();
-        if (this.rootData.ownHeleCount < 999){
-          this.rootData.ownHeleCount = this.rootData.ownHeleCount + 1;
+        if (this.heleData.ownHeleCount < 999) {
+          this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
         }
         hele_button_cap.setAttribute("data-push", "true");
         const databaseRef = firebase.database().ref(`hele`);
@@ -171,8 +164,8 @@ export default {
     }
   },
   mounted: function() {
-    this.getSound("./sound/hele.mp3");
-    this.getFirebaseData();
+    this.getHeleSound("./sound/hele.mp3");
+    this.getOmedetouSoundss(omedetouPath);
     hele_button_cap = document.querySelector(".hele_button_cap");
   }
 };
