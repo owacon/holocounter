@@ -1,8 +1,8 @@
-export default function (win, doc) {
+export default function (win, doc, total, radius) {
     'use strict';
 
-    var TOTAL = 500,
-        RADIUS = 7;
+    var TOTAL = total,
+        RADIUS = radius;
 
 
     /**

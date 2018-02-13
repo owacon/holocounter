@@ -1,11 +1,11 @@
 <template lang="pug">
 .heleButton
   canvas#bg_bubble(width='1280' height='960')
-  .hele_own_count_bg
+  .hele_own_count.hele_own_count_bg
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
-  .hele_own_count.js-isMax(data-isMax='false') {{ heleData.ownHeleCount }}
+  .hele_own_count.hele_own_count.js-isMax(data-isMax='false') {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
     .hele_button_cap.js-push(data-push='false')
     .hele_button_base
@@ -21,9 +21,9 @@
   // background-color: #000;
   display: block;
   position: absolute;
-  top: 10px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-100%);
   width: 80%;
   text-align: center;
   &[data-ismax="true"] {
@@ -37,10 +37,9 @@
     width: 70%;
     height: 150px;
     background-color: black;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
     border-radius: 15px;
+    max-width: 262.5px;
+    transform: translateX(-50%) translateY(-130%);
   }
 }
 .hele_button {
@@ -49,7 +48,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateY(-10%) translateX(-50%);
+  transform: translateY(10%) translateX(-50%);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   &_cap {
     width: 430*0.5px;
@@ -255,7 +254,7 @@ export default {
     countNumDom = document.querySelector(".js-isMax");
     canvas = document.querySelector("#bg_bubble");
     resize();
-    Bubble(window, document);
+    Bubble(window, document, 20, 7);
   }
 };
 </script>

@@ -132,7 +132,7 @@ export default {
     this.getFirebaseData();
     canvas = document.querySelector("#bg_bubble");
     resize();
-    Bubble(window, document);
+    Bubble(window, document, 500, 7);
   }
 };
 </script>
