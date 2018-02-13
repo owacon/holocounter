@@ -30,10 +30,10 @@ export default {
         heleCount: "Loading...",
         isActive: false,
         isCongrats: false,
-          defaultMax: 999,
+        defaultMax: 999,
         limit: {
           isLimited: false,
-          max: 20,
+          max: 20
         }
       }
     };
@@ -82,4 +82,27 @@ export default {
     this.getFirebaseData();
   }
 };
+
+document.documentElement.addEventListener(
+  "touchstart",
+  function(event) {
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  },
+  false
+);
+
+var lastTouchEnd = 0;
+document.documentElement.addEventListener(
+  "touchend",
+  function(event) {
+    var now = new Date().getTime();
+    if (now - lastTouchEnd <= 100) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  },
+  false
+);
 </script>

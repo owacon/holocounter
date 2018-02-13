@@ -13133,7 +13133,7 @@ exports.insert = function (css) {
 }
 
 },{}],85:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #000;\n  color: #fff;\n  height: 100%; }\n\n.button[data-v-2efafaba] {\n  width: 100px;\n  border: solid 1px #ccc;\n  padding: 15px 0px;\n  margin: 0 20px 20px;\n  font-size: 1.2em;\n  font-weight: bold;\n  color: #333;\n  cursor: pointer; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #555;\n  color: #fff;\n  height: 100%; }\n  .admin_inner[data-v-2efafaba] {\n    max-width: 375px;\n    position: absolute;\n    width: 90%;\n    top: 50%;\n    left: 50%;\n    transform: translateX(-50%) translateY(-50%); }\n\n.div[data-v-2efafaba] {\n  margin: 0 0 20px 0; }\n\n.num_title[data-v-2efafaba] {\n  width: 50%;\n  display: inline-block;\n  text-align: center; }\n\n.nowCount[data-v-2efafaba] {\n  display: inline-block;\n  margin: 0 1% 0 0.5%; }\n\n.max_num[data-v-2efafaba] {\n  vertical-align: top;\n  border: none; }\n\n.nowCount[data-v-2efafaba],\n.max_num[data-v-2efafaba] {\n  line-height: 64px;\n  background-color: #000;\n  width: 45%;\n  height: 64px;\n  text-align: center;\n  color: white;\n  font-family: \"digital-7\";\n  font-size: 50px;\n  padding: 2%;\n  border-radius: 10px; }\n\n.toggle_button[data-v-2efafaba]:focus:hover {\n  outline: none; }\n\n.button[data-v-2efafaba],\n.toggle_button[data-v-2efafaba] {\n  appearance: none;\n  -webkit-appearance: none;\n  -ms-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  vertical-align: top;\n  height: 64px;\n  margin: 0;\n  border-radius: 8px;\n  border: 1px solid #888;\n  background-color: #333;\n  text-align: center;\n  line-height: 60px;\n  font-size: 20px;\n  cursor: pointer;\n  transition: 200ms; }\n  .button--stop[data-v-2efafaba],\n  .toggle_button--stop[data-v-2efafaba] {\n    width: 100%; }\n  .button--limit[data-v-2efafaba], .button--congrats[data-v-2efafaba],\n  .toggle_button--limit[data-v-2efafaba],\n  .toggle_button--congrats[data-v-2efafaba] {\n    width: 50%; }\n\n.button[data-v-2efafaba]:active,\n.toggle_button[data-v-2efafaba]:active {\n  height: 62px;\n  margin-top: 2px;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:not(:checked)::after {\n  display: inline;\n  content: attr(data-off-label);\n  color: #888;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:checked::after {\n  display: inline;\n  content: attr(data-on-label);\n  color: #cfc;\n  text-shadow: 0px 0px 10px #cfc, 0px 0px 20px #cfc, 0px 0px 30px #cfc;\n  transition: 400ms; }\n\n.toggle_button[data-v-2efafaba]:active::after {\n  transition: none; }\n\n.button--reset[data-v-2efafaba] {\n  width: 100%; }\n\n.button--hele[data-v-2efafaba] {\n  width: 100%; }\n\n.button--reset[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  color: #f77;\n  text-shadow: 0px 0px 10px #f77, 0px 0px 20px #f77;\n  transition: none; }\n\n.button--hele[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  color: #99f;\n  text-shadow: 0px 0px 10px #99f, 0px 0px 20px #99f;\n  transition: none; }")
 ;(function(){
 "use strict";
 
@@ -13151,26 +13151,38 @@ exports.default = {
     resetHeleCount: function resetHeleCount() {
       firebase.database().ref("hele").set(0);
     },
-    stopHeleCount: function stopHeleCount() {
-      if (this.heleData.isActive) {
-        firebase.database().ref("isActive").set(false);
-      }
-    },
-    startHeleCount: function startHeleCount() {
-      if (!this.heleData.isActive) {
-        firebase.database().ref("isActive").set(true);
+    toggleHeleCount: function toggleHeleCount(e) {
+      if (e.target.checked) {
+        firebase.database().ref("isActive").set(e.target.checked);
+      } else if (!e.target.checked) {
+        firebase.database().ref("isActive").set(e.target.checked);
       }
     },
     toggleHeleLimit: function toggleHeleLimit(e) {
-      firebase.database().ref("limit/isLimited").set(!!this.heleData.limit.isLimited);
-      console.log(e.target.value);
-    },
-    toggleCongrats: function toggleCongrats() {
-      if (this.heleData.isCongrats) {
-        firebase.database().ref("isCongrats").set(false);
-      } else if (!this.heleData.isCongrats) {
-        firebase.database().ref("isCongrats").set(true);
+      if (e.target.checked) {
+        firebase.database().ref("limit/isLimited").set(true);
+      } else if (!e.target.checked) {
+        firebase.database().ref("limit/isLimited").set(false);
       }
+    },
+    toggleCongrats: function toggleCongrats(e) {
+      if (e.target.checked) {
+        firebase.database().ref("isCongrats").set(e.target.checked);
+      } else if (!e.target.checked) {
+        firebase.database().ref("isCongrats").set(e.target.checked);
+      }
+    },
+    setMaxNum: function setMaxNum(e) {
+      firebase.database().ref("limit/max").set(e.target.value);
+    },
+    superIncrementHele: function superIncrementHele() {
+      var databaseRef = firebase.database().ref("hele");
+      databaseRef.transaction(function (searches) {
+        if (searches !== undefined) {
+          searches = searches + 1;
+        }
+        return searches;
+      });
     }
   },
   mounted: function mounted() {}
@@ -13179,8 +13191,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"div1"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"リセット"},on:{"click":_vm.resetHeleCount}}),(_vm.heleData.isActive)?_c('input',{staticClass:"button",attrs:{"type":"submit","value":"ストップ"},on:{"click":_vm.stopHeleCount}}):_c('input',{staticClass:"button",attrs:{"type":"submit","value":"スタート"},on:{"click":_vm.startHeleCount}})]),_c('div',{staticClass:"div2"},[_vm._v("へぇ制限:"),_c('form',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],attrs:{"type":"text","name":"limit","size":"4","maxlength":"4"},domProps:{"value":(_vm.heleData.limit.max)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"off","value":"false"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"false")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "false")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"off"}},[_vm._v("off")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"on","value":"true"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"true")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "true")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"on"}},[_vm._v("on")])])]),_c('div',{staticClass:"div3"},[_vm._v("おめでとう:"),(!_vm.heleData.isCongrats)?_c('input',{staticClass:"button",attrs:{"type":"submit","value":"on"},on:{"click":_vm.toggleCongrats}}):_c('input',{staticClass:"button",attrs:{"type":"submit","value":"off"},on:{"click":_vm.toggleCongrats}})])])}
-__vue__options__.staticRenderFns = []
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"admin_inner"},[_vm._m(0),_c('div',{staticClass:"div div2"},[_c('div',{staticClass:"nowCount"},[_vm._v(_vm._s(_vm.heleData.heleCount))]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],staticClass:"max_num",attrs:{"type":"number","name":"limit","size":"3","maxlength":"3"},domProps:{"value":(_vm.heleData.limit.max)},on:{"change":function($event){_vm.setMaxNum($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}})]),_c('div',{staticClass:"div div3"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isCongrats),expression:"heleData.isCongrats"}],staticClass:"toggle_button toggle_button--congrats",attrs:{"type":"checkbox","data-off-label":"MEDETAKUNAI","data-on-label":"MEDETAI"},domProps:{"checked":Array.isArray(_vm.heleData.isCongrats)?_vm._i(_vm.heleData.isCongrats,null)>-1:(_vm.heleData.isCongrats)},on:{"change":[function($event){var $$a=_vm.heleData.isCongrats,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isCongrats=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isCongrats=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isCongrats", $$c)}},function($event){_vm.toggleCongrats($event)}]}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],staticClass:"toggle_button toggle_button--limit",attrs:{"type":"checkbox","data-off-label":"UNLIMITED","data-on-label":"LIMITED"},domProps:{"checked":Array.isArray(_vm.heleData.limit.isLimited)?_vm._i(_vm.heleData.limit.isLimited,null)>-1:(_vm.heleData.limit.isLimited)},on:{"change":[function($event){var $$a=_vm.heleData.limit.isLimited,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.limit.isLimited=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.limit.isLimited=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData.limit, "isLimited", $$c)}},function($event){_vm.toggleHeleLimit($event)}]}})]),_c('div',{staticClass:"div div4"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isActive),expression:"heleData.isActive"}],staticClass:"toggle_button toggle_button--stop",attrs:{"type":"checkbox","data-off-label":"STOP","data-on-label":"RUN"},domProps:{"checked":Array.isArray(_vm.heleData.isActive)?_vm._i(_vm.heleData.isActive,null)>-1:(_vm.heleData.isActive)},on:{"change":[function($event){var $$a=_vm.heleData.isActive,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isActive=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isActive=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isActive", $$c)}},function($event){_vm.toggleHeleCount($event)}]}})]),_c('div',{staticClass:"div div5"},[_c('button',{staticClass:"button button--reset",attrs:{"type":"submit","value":"RESET"},on:{"click":_vm.resetHeleCount}})]),_c('div',{staticClass:"div div6"},[_c('button',{staticClass:"button button--hele",attrs:{"type":"submit","value":"SUPER HELE"},on:{"click":_vm.superIncrementHele}})])])])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"div1"},[_c('div',{staticClass:"num_title"},[_vm._v("NOW HELE")]),_c('div',{staticClass:"num_title"},[_vm._v("MAX HELE")])])}]
 __vue__options__._scopeId = "data-v-2efafaba"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -13244,7 +13256,7 @@ exports.default = {
   },
   mounted: function mounted() {
     this.getFirebaseData();
-    canvas = document.querySelector("#counter_bg_bubble");
+    canvas = document.querySelector("#bg_bubble");
     resize();
     (0, _Bubble2.default)(window, document);
   }
@@ -13253,7 +13265,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_c('canvas',{attrs:{"id":"counter_bg_bubble","width":"1280","height":"960"}}),_vm._m(0),(_vm.counterLength == 1)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("888")]):_vm._e(),(_vm.counterLength == 4)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8888")]):_vm._e(),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_c('canvas',{attrs:{"id":"bg_bubble","width":"1280","height":"960"}}),_vm._m(0),(_vm.counterLength == 1)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("888")]):_vm._e(),(_vm.counterLength == 4)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8888")]):_vm._e(),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter_frame"},[_c('div',{staticClass:"counter_hele"},[_vm._v("へぇ")])])}]
 __vue__options__._scopeId = "data-v-8162d060"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13264,7 +13276,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-8162d060", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-8162d060", __vue__options__)
+    hotAPI.reload("data-v-8162d060", __vue__options__)
   }
 })()}
 },{"../lib/Bubble.js":89,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
@@ -13284,6 +13296,10 @@ var _axios = require("axios");
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _Bubble = require("../lib/Bubble.js");
+
+var _Bubble2 = _interopRequireDefault(_Bubble);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var omedetouPath = ["./sound/omedetou/misato.mp3", "./sound/omedetou/asuka.mp3", "./sound/omedetou/rei.mp3", "./sound/omedetou/kensuke.mp3", "./sound/omedetou/touji.mp3"];
@@ -13294,6 +13310,12 @@ var context = new AudioContext();
 
 var pushAnimationDom = void 0;
 var countNumDom = void 0;
+var canvas = void 0;
+
+var resize = function resize() {
+  canvas.setAttribute("width", window.innerWidth);
+  canvas.setAttribute("height", window.innerHeight);
+};
 
 exports.default = {
   name: "hele-button",
@@ -13368,65 +13390,104 @@ exports.default = {
     },
     incrementHele: function incrementHele() {
       if (this.heleData.isActive) {
-        if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
-          this.playSound();
-          this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
-          var _iteratorNormalCompletion2 = true;
-          var _didIteratorError2 = false;
-          var _iteratorError2 = undefined;
+        if (this.heleData.limit.isLimited) {
+          if (this.heleData.ownHeleCount < this.heleData.limit.max) {
+            this.playSound();
+            this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
 
-          try {
-            for (var _iterator2 = (0, _getIterator3.default)(pushAnimationDom), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-              var val = _step2.value;
-
-              val.setAttribute("data-push", "true");
-            }
-          } catch (err) {
-            _didIteratorError2 = true;
-            _iteratorError2 = err;
-          } finally {
             try {
-              if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                _iterator2.return();
-              }
-            } finally {
-              if (_didIteratorError2) {
-                throw _iteratorError2;
-              }
-            }
-          }
+              for (var _iterator2 = (0, _getIterator3.default)(pushAnimationDom), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var val = _step2.value;
 
-          var databaseRef = firebase.database().ref("hele");
-          databaseRef.transaction(function (searches) {
-            if (searches !== undefined) {
-              searches = searches + 1;
+                val.setAttribute("data-push", "true");
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                  _iterator2.return();
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
             }
-            return searches;
-          });
+
+            var databaseRef = firebase.database().ref("hele");
+            databaseRef.transaction(function (searches) {
+              if (searches !== undefined) {
+                searches = searches + 1;
+              }
+              return searches;
+            });
+          }
+        } else if (!this.heleData.limit.isLimited) {
+          if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
+            this.playSound();
+            this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+              for (var _iterator3 = (0, _getIterator3.default)(pushAnimationDom), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var _val = _step3.value;
+
+                _val.setAttribute("data-push", "true");
+              }
+            } catch (err) {
+              _didIteratorError3 = true;
+              _iteratorError3 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                  _iterator3.return();
+                }
+              } finally {
+                if (_didIteratorError3) {
+                  throw _iteratorError3;
+                }
+              }
+            }
+
+            var _databaseRef = firebase.database().ref("hele");
+            _databaseRef.transaction(function (searches) {
+              if (searches !== undefined) {
+                searches = searches + 1;
+              }
+              return searches;
+            });
+          }
         }
       }
       setTimeout(function () {
-        var _iteratorNormalCompletion3 = true;
-        var _didIteratorError3 = false;
-        var _iteratorError3 = undefined;
+        var _iteratorNormalCompletion4 = true;
+        var _didIteratorError4 = false;
+        var _iteratorError4 = undefined;
 
         try {
-          for (var _iterator3 = (0, _getIterator3.default)(pushAnimationDom), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-            var _val = _step3.value;
+          for (var _iterator4 = (0, _getIterator3.default)(pushAnimationDom), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+            var _val2 = _step4.value;
 
-            _val.setAttribute("data-push", "false");
+            _val2.setAttribute("data-push", "false");
           }
         } catch (err) {
-          _didIteratorError3 = true;
-          _iteratorError3 = err;
+          _didIteratorError4 = true;
+          _iteratorError4 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-              _iterator3.return();
+            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+              _iterator4.return();
             }
           } finally {
-            if (_didIteratorError3) {
-              throw _iteratorError3;
+            if (_didIteratorError4) {
+              throw _iteratorError4;
             }
           }
         }
@@ -13435,11 +13496,18 @@ exports.default = {
   },
   watch: {
     "heleData.ownHeleCount": function heleDataOwnHeleCount() {
-      console.log(countNumDom.getAttribute("data-isMax"));
-      if (this.heleData.defaultMax == this.heleData.ownHeleCount) {
-        countNumDom.setAttribute("data-isMax", "true");
-      } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
-        countNumDom.setAttribute("data-isMax", "false");
+      if (this.heleData.limit.isLimited) {
+        if (this.heleData.limit.max <= this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "true");
+        } else if (this.heleData.limit.max > this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "false");
+        }
+      } else if (!this.heleData.limit.isLimited) {
+        if (this.heleData.defaultMax <= this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "true");
+        } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "false");
+        }
       }
     }
   },
@@ -13448,13 +13516,16 @@ exports.default = {
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
     countNumDom = document.querySelector(".js-isMax");
+    canvas = document.querySelector("#bg_bubble");
+    resize();
+    (0, _Bubble2.default)(window, document);
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('div',{staticClass:"hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count js-isMax",attrs:{"data-isMax":"false"}},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('canvas',{attrs:{"id":"bg_bubble","width":"1280","height":"960"}}),_c('div',{staticClass:"hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count js-isMax",attrs:{"data-isMax":"false"}},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-0bc86c38"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13468,7 +13539,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-0bc86c38", __vue__options__)
   }
 })()}
-},{"axios":1,"babel-runtime/core-js/get-iterator":26,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],88:[function(require,module,exports){
+},{"../lib/Bubble.js":89,"axios":1,"babel-runtime/core-js/get-iterator":26,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],88:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".root[data-v-68332284] {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  background: linear-gradient(#6789f7, #36b9d7, #a8e7fa); }")
 ;(function(){
 "use strict";
@@ -13543,6 +13614,22 @@ exports.default = {
     this.getFirebaseData();
   }
 };
+
+
+document.documentElement.addEventListener("touchstart", function (event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, false);
+
+var lastTouchEnd = 0;
+document.documentElement.addEventListener("touchend", function (event) {
+  var now = new Date().getTime();
+  if (now - lastTouchEnd <= 100) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
@@ -13649,7 +13736,7 @@ exports.default = function (win, doc) {
      */
     doc.addEventListener('DOMContentLoaded', function () {
 
-        var canvas = doc.getElementById('counter_bg_bubble');
+        var canvas = doc.getElementById('bg_bubble');
 
         var bubbles = new Bubbles(canvas);
         for (var i = 0, l = TOTAL; i < l; i++) {

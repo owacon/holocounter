@@ -82,7 +82,7 @@ export default function (win, doc) {
      */
     doc.addEventListener('DOMContentLoaded', function () {
 
-        var canvas = doc.getElementById('counter_bg_bubble');
+        var canvas = doc.getElementById('bg_bubble');
 
         var bubbles = new Bubbles(canvas);
         for (var i = 0, l = TOTAL; i < l; i++) {

@@ -1,5 +1,6 @@
 <template lang="pug">
 .heleButton
+  canvas#bg_bubble(width='1280' height='960')
   .hele_own_count_bg
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
@@ -109,6 +110,8 @@
 <script>
 import axios from "axios";
 
+import Bubble from "../lib/Bubble.js";
+
 const omedetouPath = [
   "./sound/omedetou/misato.mp3",
   "./sound/omedetou/asuka.mp3",
@@ -123,6 +126,12 @@ const context = new AudioContext();
 
 let pushAnimationDom;
 let countNumDom;
+let canvas;
+
+const resize = () => {
+  canvas.setAttribute("width", window.innerWidth);
+  canvas.setAttribute("height", window.innerHeight);
+};
 
 export default {
   name: "hele-button",
@@ -183,19 +192,36 @@ export default {
 
     incrementHele() {
       if (this.heleData.isActive) {
-        if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
-          this.playSound();
-          this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
-          for (let val of pushAnimationDom) {
-            val.setAttribute("data-push", "true");
-          }
-          const databaseRef = firebase.database().ref(`hele`);
-          databaseRef.transaction(function(searches) {
-            if (searches !== undefined) {
-              searches = searches + 1;
+        if (this.heleData.limit.isLimited) {
+          if (this.heleData.ownHeleCount < this.heleData.limit.max) {
+            this.playSound();
+            this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
+            for (let val of pushAnimationDom) {
+              val.setAttribute("data-push", "true");
             }
-            return searches;
-          });
+            const databaseRef = firebase.database().ref(`hele`);
+            databaseRef.transaction(function(searches) {
+              if (searches !== undefined) {
+                searches = searches + 1;
+              }
+              return searches;
+            });
+          }
+        } else if (!this.heleData.limit.isLimited) {
+          if (this.heleData.ownHeleCount < this.heleData.defaultMax) {
+            this.playSound();
+            this.heleData.ownHeleCount = this.heleData.ownHeleCount + 1;
+            for (let val of pushAnimationDom) {
+              val.setAttribute("data-push", "true");
+            }
+            const databaseRef = firebase.database().ref(`hele`);
+            databaseRef.transaction(function(searches) {
+              if (searches !== undefined) {
+                searches = searches + 1;
+              }
+              return searches;
+            });
+          }
         }
       }
       setTimeout(function() {
@@ -207,12 +233,18 @@ export default {
   },
   watch: {
     "heleData.ownHeleCount": function() {
-      console.log(countNumDom.getAttribute("data-isMax"));
-      if (this.heleData.defaultMax == this.heleData.ownHeleCount) {
-        countNumDom.setAttribute("data-isMax", "true");
-      }
-      else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
-        countNumDom.setAttribute("data-isMax", "false");
+      if (this.heleData.limit.isLimited) {
+        if (this.heleData.limit.max <= this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "true");
+        } else if (this.heleData.limit.max > this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "false");
+        }
+      } else if (!this.heleData.limit.isLimited) {
+        if (this.heleData.defaultMax <= this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "true");
+        } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
+          countNumDom.setAttribute("data-isMax", "false");
+        }
       }
     }
   },
@@ -221,6 +253,9 @@ export default {
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
     countNumDom = document.querySelector(".js-isMax");
+    canvas = document.querySelector("#bg_bubble");
+    resize();
+    Bubble(window, document);
   }
 };
 </script>
