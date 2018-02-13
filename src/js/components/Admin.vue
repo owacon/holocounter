@@ -1,9 +1,9 @@
 <template lang="pug">
 .admin
     .div1
-        input(type="submit" value="リセット" v-on:click="resetHeleCount")
-        input(type="submit" value="ストップ" v-if="heleData.isActive" v-on:click="stopHeleCount")
-        input(type="submit" value="スタート" v-else v-on:click="startHeleCount")
+        input.button(type="submit" value="リセット" v-on:click="resetHeleCount")
+        input.button(type="submit" value="ストップ" v-if="heleData.isActive" v-on:click="stopHeleCount")
+        input.button(type="submit" value="スタート" v-else v-on:click="startHeleCount")
     .div2 へぇ制限:
         form
             input(type="text" name="limit" size="4" maxlength="4" v-model='heleData.limit.max')
@@ -12,8 +12,8 @@
             input(type="radio" id='on' value="true" v-model='heleData.limit.isLimited' v-on:change='toggleHeleLimit')
             label(for="on") on
     .div3 おめでとう:
-        input(type="submit" value="on" v-if="!heleData.isCongrats" v-on:click="toggleCongrats")
-        input(type="submit" value="off" v-else v-on:click="toggleCongrats")
+        input.button(type="submit" value="on" v-if="!heleData.isCongrats" v-on:click="toggleCongrats")
+        input.button(type="submit" value="off" v-else v-on:click="toggleCongrats")
 </template>
 
 <style lang="scss" scoped>
@@ -22,6 +22,16 @@
   background-color: #000;
   color: #fff;
   height: 100%;
+}
+.button {
+  width: 100px;
+  border: solid 1px #ccc;
+  padding: 15px 0px;
+  margin: 0 20px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
 }
 </style>
 
@@ -75,8 +85,7 @@ export default {
           .database()
           .ref("isCongrats")
           .set(false);
-      }
-      else if(!this.heleData.isCongrats) {
+      } else if (!this.heleData.isCongrats) {
         firebase
           .database()
           .ref("isCongrats")

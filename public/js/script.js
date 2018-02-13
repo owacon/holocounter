@@ -13133,7 +13133,7 @@ exports.insert = function (css) {
 }
 
 },{}],85:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #000;\n  color: #fff;\n  height: 100%; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #000;\n  color: #fff;\n  height: 100%; }\n\n.button[data-v-2efafaba] {\n  width: 100px;\n  border: solid 1px #ccc;\n  padding: 15px 0px;\n  margin: 0 20px 20px;\n  font-size: 1.2em;\n  font-weight: bold;\n  color: #333;\n  cursor: pointer; }")
 ;(function(){
 "use strict";
 
@@ -13179,7 +13179,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"div1"},[_c('input',{attrs:{"type":"submit","value":"リセット"},on:{"click":_vm.resetHeleCount}}),(_vm.heleData.isActive)?_c('input',{attrs:{"type":"submit","value":"ストップ"},on:{"click":_vm.stopHeleCount}}):_c('input',{attrs:{"type":"submit","value":"スタート"},on:{"click":_vm.startHeleCount}})]),_c('div',{staticClass:"div2"},[_vm._v("へぇ制限:"),_c('form',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],attrs:{"type":"text","name":"limit","size":"4","maxlength":"4"},domProps:{"value":(_vm.heleData.limit.max)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"off","value":"false"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"false")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "false")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"off"}},[_vm._v("off")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"on","value":"true"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"true")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "true")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"on"}},[_vm._v("on")])])]),_c('div',{staticClass:"div3"},[_vm._v("おめでとう:"),(!_vm.heleData.isCongrats)?_c('input',{attrs:{"type":"submit","value":"on"},on:{"click":_vm.toggleCongrats}}):_c('input',{attrs:{"type":"submit","value":"off"},on:{"click":_vm.toggleCongrats}})])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"div1"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"リセット"},on:{"click":_vm.resetHeleCount}}),(_vm.heleData.isActive)?_c('input',{staticClass:"button",attrs:{"type":"submit","value":"ストップ"},on:{"click":_vm.stopHeleCount}}):_c('input',{staticClass:"button",attrs:{"type":"submit","value":"スタート"},on:{"click":_vm.startHeleCount}})]),_c('div',{staticClass:"div2"},[_vm._v("へぇ制限:"),_c('form',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],attrs:{"type":"text","name":"limit","size":"4","maxlength":"4"},domProps:{"value":(_vm.heleData.limit.max)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"off","value":"false"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"false")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "false")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"off"}},[_vm._v("off")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],attrs:{"type":"radio","id":"on","value":"true"},domProps:{"checked":_vm._q(_vm.heleData.limit.isLimited,"true")},on:{"change":[function($event){_vm.$set(_vm.heleData.limit, "isLimited", "true")},_vm.toggleHeleLimit]}}),_c('label',{attrs:{"for":"on"}},[_vm._v("on")])])]),_c('div',{staticClass:"div3"},[_vm._v("おめでとう:"),(!_vm.heleData.isCongrats)?_c('input',{staticClass:"button",attrs:{"type":"submit","value":"on"},on:{"click":_vm.toggleCongrats}}):_c('input',{staticClass:"button",attrs:{"type":"submit","value":"off"},on:{"click":_vm.toggleCongrats}})])])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-2efafaba"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13201,6 +13201,19 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".counter
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _Bubble = require("../lib/Bubble.js");
+
+var _Bubble2 = _interopRequireDefault(_Bubble);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var canvas = void 0;
+var resize = function resize() {
+  canvas.setAttribute("width", window.innerWidth);
+  canvas.setAttribute("height", window.innerHeight);
+};
+
 exports.default = {
   name: "counter",
   data: function data() {
@@ -13231,13 +13244,16 @@ exports.default = {
   },
   mounted: function mounted() {
     this.getFirebaseData();
+    canvas = document.querySelector("#counter_bg_bubble");
+    resize();
+    (0, _Bubble2.default)(window, document);
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_vm._m(0),(_vm.counterLength == 1)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("888")]):_vm._e(),(_vm.counterLength == 4)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8888")]):_vm._e(),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter"},[_c('div',{staticClass:"counter_bg"},[_c('canvas',{attrs:{"id":"counter_bg_bubble","width":"1280","height":"960"}}),_vm._m(0),(_vm.counterLength == 1)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("888")]):_vm._e(),(_vm.counterLength == 4)?_c('div',{staticClass:"counter_number counter_number_shadow"},[_vm._v("8888")]):_vm._e(),_c('div',{staticClass:"counter_number"},[_vm._v(_vm._s(_vm.heleData.heleCount))])])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"counter_frame"},[_c('div',{staticClass:"counter_hele"},[_vm._v("へぇ")])])}]
 __vue__options__._scopeId = "data-v-8162d060"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13251,7 +13267,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-8162d060", __vue__options__)
   }
 })()}
-},{"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
+},{"../lib/Bubble.js":89,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".hele_own_count[data-v-0bc86c38] {\n  font-family: \"digital-7\";\n  font-size: 150px;\n  color: white;\n  display: block;\n  position: absolute;\n  top: 10px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 80%;\n  text-align: center; }\n  .hele_own_count[data-ismax=\"true\"][data-v-0bc86c38] {\n    color: red; }\n  .hele_own_count_shadow[data-v-0bc86c38] {\n    color: rgba(128, 128, 128, 0.3); }\n  .hele_own_count_bg[data-v-0bc86c38] {\n    position: absolute;\n    width: 70%;\n    height: 150px;\n    background-color: black;\n    top: 40px;\n    left: 50%;\n    transform: translateX(-50%);\n    border-radius: 15px; }\n\n.hele_button[data-v-0bc86c38] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(-10%) translateX(-50%);\n  -webkit-tap-highlight-color: transparent; }\n  .hele_button_cap[data-v-0bc86c38] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-0bc86c38] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-0bc86c38] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }\n  .hele_button_flash[data-v-0bc86c38] {\n    background-image: url(\"./img/hele_flash3.png\");\n    background-size: contain;\n    background-position: center;\n    width: 640px;\n    height: 640px;\n    left: 50%;\n    top: 50%;\n    position: absolute;\n    transform: translateX(-50%) translateY(-42%);\n    display: none;\n    pointer-events: none; }\n    .hele_button_flash[data-push=\"true\"][data-v-0bc86c38] {\n      display: block;\n      animation: flash 0.8s ease 0s;\n      animation-fill-mode: forwards; }\n\n@keyframes flash {\n  0% {\n    opacity: 0; }\n  10% {\n    opacity: 0.3; }\n  90% {\n    opacity: 0.3; }\n  100% {\n    opacity: 0; } }")
 ;(function(){
 "use strict";
@@ -13548,6 +13564,112 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 },{"./Admin.vue":85,"./HeleButton.vue":87,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],89:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (win, doc) {
+    'use strict';
+
+    var TOTAL = 500,
+        RADIUS = 7;
+
+    /**
+     * @class Bubble
+     * @constructor
+     * @param {HTMLCanvasElement}
+     */
+    function Bubble(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.base = {};
+
+        this._init();
+    }
+
+    Bubble.prototype._init = function () {
+
+        this.ctx.fillStyle = 'rgba(150, 200, 255, .5)';
+        this.x = this.base.x = Math.random() * (this.ctx.canvas.width - RADIUS);
+        this.y = this.base.y = Math.random() * (this.ctx.canvas.height - RADIUS);
+        this.radius = Math.random() * RADIUS;
+        this.posX = Math.random() * 10;
+
+        this.draw();
+    };
+
+    Bubble.prototype.draw = function () {
+        this.ctx.save();
+
+        this.ctx.beginPath();
+        this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        this.ctx.fill();
+
+        this.ctx.restore();
+    };
+
+    Bubble.prototype.render = function () {
+        this.x = Math.sin(this.posX += 0.4) * this.radius * 0.2 + 8 + this.base.x;
+        this.y -= this.radius * 0.35;
+        if (this.y <= -100) {
+            this.y = this.ctx.canvas.height + RADIUS;
+        }
+        this.draw();
+    };
+
+    /**
+     * @class Bubbles
+     * @constructor
+     * @param {HTMLCanvasElement}
+     */
+    function Bubbles(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+
+        this.child = [];
+    }
+
+    Bubbles.prototype.add = function (bubble) {
+        this.child.push(bubble);
+    };
+
+    Bubbles.prototype.remove = function (i) {
+        this.child.shift();
+    };
+
+    Bubbles.prototype.update = function () {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        for (var i = 0, l = this.child.length; i < l; i++) {
+            this.child[i].render();
+        }
+    };
+
+    /**
+     * DOMContentLoaded
+     */
+    doc.addEventListener('DOMContentLoaded', function () {
+
+        var canvas = doc.getElementById('counter_bg_bubble');
+
+        var bubbles = new Bubbles(canvas);
+        for (var i = 0, l = TOTAL; i < l; i++) {
+            var bubble = new Bubble(canvas);
+            bubbles.add(bubble);
+        }
+
+        tick();
+
+        function tick() {
+            bubbles.update();
+            requestAnimationFrame(tick);
+            // setTimeout(tick, 1000 / 35);
+        }
+    }, false);
+};
+
+},{}],90:[function(require,module,exports){
+'use strict';
+
 var _vue = require('vue');
 
 var _vue2 = _interopRequireDefault(_vue);
@@ -13617,4 +13739,4 @@ new _vue2.default({
 // }
 // });
 
-},{"./components/Admin.vue":85,"./components/Counter.vue":86,"./components/HeleButton.vue":87,"./components/Root.vue":88,"vue":83,"vue-router":82}]},{},[89]);
+},{"./components/Admin.vue":85,"./components/Counter.vue":86,"./components/HeleButton.vue":87,"./components/Root.vue":88,"vue":83,"vue-router":82}]},{},[90]);

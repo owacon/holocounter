@@ -1,6 +1,7 @@
 <template lang="pug">
 .counter
     .counter_bg
+      canvas#counter_bg_bubble(width='1280' height='960')
       .counter_frame
         .counter_hele へぇ
       .counter_number.counter_number_shadow(v-if='counterLength == 1') 8
@@ -80,6 +81,25 @@
 </style>
 
 <script>
+import Bubble from "../lib/Bubble.js";
+
+let canvas;
+const resize = () => {
+  canvas.setAttribute("width", window.innerWidth);
+  canvas.setAttribute("height", window.innerHeight);
+};
+
+// let timer = 0;
+
+// window.onresize = function() {
+//   if (timer > 0) {
+//     clearTimeout(timer);
+//   }
+//   timer = setTimeout(() => {
+//     resize();
+//   }, 200);
+// };
+
 export default {
   name: "counter",
   data() {
@@ -110,6 +130,9 @@ export default {
   },
   mounted: function() {
     this.getFirebaseData();
+    canvas = document.querySelector("#counter_bg_bubble");
+    resize();
+    Bubble(window, document);
   }
 };
 </script>
