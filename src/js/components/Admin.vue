@@ -2,11 +2,12 @@
 .admin
   .admin_inner
     .div1
-      .num_title NOW HELE
+      .num_title CURRENT HELE
       .num_title MAX HELE
     .div.div2
-      div.nowCount {{ heleData.heleCount}}
-      input.max_num(type="number" name="limit" size="3" maxlength="3" v-model='heleData.limit.max' v-on:change='setMaxNum($event)')
+      // div.nowCount {{ heleData.heleCount}}
+      input.nowCount(type="number" name="count" size="4" maxlength="4" v-model='heleData.heleCount' v-on:blur='setCountNum($event)')
+      input.max_num(type="number" name="limit" size="3" maxlength="3" v-model='heleData.limit.max' v-on:blur='setMaxNum($event)')
     .div.div3
       input.toggle_button.toggle_button--congrats(type="checkbox" data-off-label="MEDETAKUNAI" data-on-label="MEDETAI" v-model='heleData.isCongrats' v-on:change="toggleCongrats($event)")
       input.toggle_button.toggle_button--limit(type="checkbox" data-off-label="UNLIMITED" data-on-label="LIMITED" v-model='heleData.limit.isLimited' v-on:change='toggleHeleLimit($event)')
@@ -47,10 +48,10 @@
 }
 .max_num {
   vertical-align: top;
-  border: none;
 }
 .nowCount,
 .max_num {
+  border: none;
   line-height: 64px;
   background-color: #000;
   width: 45%;
@@ -198,9 +199,14 @@ export default {
       firebase
         .database()
         .ref("limit/max")
-        .set(e.target.value);
+        .set(parseInt(e.target.value));
     },
-
+    setCountNum(e) {
+      firebase
+        .database()
+        .ref("hele")
+        .set(parseInt(e.target.value));
+    },
     superIncrementHele() {
       const databaseRef = firebase.database().ref(`hele`);
       databaseRef.transaction(function(searches) {
