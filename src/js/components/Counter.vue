@@ -4,11 +4,11 @@
       canvas#bg_bubble(width='1280' height='960')
       .counter_frame
         .counter_hele へぇ
-      .counter_number.counter_number_shadow(v-if='counterLength == 1') 8
-      .counter_number.counter_number_shadow(v-if='counterLength == 2') 88
-      .counter_number.counter_number_shadow(v-if='counterLength == 3') 888
-      .counter_number.counter_number_shadow(v-if='counterLength == 4') 8888
-      .counter_number {{ heleData.heleCount }}
+        .counter_number.counter_number_shadow(v-if='counterLength == 1') 8
+        .counter_number.counter_number_shadow(v-if='counterLength == 2') 88
+        .counter_number.counter_number_shadow(v-if='counterLength == 3') 888
+        .counter_number.counter_number_shadow(v-if='counterLength == 4') 8888
+        .counter_number {{ heleData.heleCount }}
 </template>
 
 <style lang="scss" scoped>
@@ -25,37 +25,32 @@
   }
   &_frame {
     @include pc-layout {
-      width: 1000px;
-      height: 718px;
+      width: 718px / 1000px * 100%;
+      height: 100%;
     }
     @include sp-layout {
-      width: 500px;
-      height: 359px;
+      width: 359px / 500px * 100%;
+      height: 100%;
     }
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     background-image: url("./img/frame2.png");
-    background-size: contain;
+    background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
   }
   &_number {
     font-family: "digital-7";
-    @include pc-layout {
-      font-size: 400px;
-    }
-    @include sp-layout {
-      font-size: 200px;
-    }
+    font-size: 26vw;
     color: white;
     // background-color: #000;
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-47%) translateX(-50%);
     width: 80%;
     text-align: center;
     &_shadow {
@@ -66,15 +61,14 @@
     color: white;
     font-weight: bold;
     position: absolute;
+    font-size: 6vw;
+    top: 50%;
+    left: 50%;
+    transform: translateY(88%) translateX(101%);
     @include pc-layout {
-      font-size: 80px;
-      bottom: 130px;
-      right: 200px;
     }
     @include sp-layout {
-      font-size: 40px;
-      bottom: 65px;
-      right: 100px;
+
     }
   }
 }
