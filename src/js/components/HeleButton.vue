@@ -5,7 +5,7 @@
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
-  .hele_own_count.hele_own_count.js-isMax(data-isMax='false') {{ heleData.ownHeleCount }}
+  .hele_own_count.hele_own_count.js-is-max(data-is-max='false') {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
     .hele_button_cap.js-push(data-push='false')
     .hele_button_base
@@ -26,7 +26,7 @@
   transform: translateX(-50%) translateY(-100%);
   width: 80%;
   text-align: center;
-  &[data-ismax="true"] {
+  &[data-is-max="true"] {
     color: red;
   }
   &_shadow {
@@ -234,15 +234,15 @@ export default {
     "heleData.ownHeleCount": function() {
       if (this.heleData.limit.isLimited) {
         if (this.heleData.limit.max <= this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "true");
+          countNumDom.setAttribute("data-is-max", "true");
         } else if (this.heleData.limit.max > this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "false");
+          countNumDom.setAttribute("data-is-max", "false");
         }
       } else if (!this.heleData.limit.isLimited) {
         if (this.heleData.defaultMax <= this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "true");
+          countNumDom.setAttribute("data-is-max", "true");
         } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "false");
+          countNumDom.setAttribute("data-is-max", "false");
         }
       }
     }
@@ -251,7 +251,7 @@ export default {
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
-    countNumDom = document.querySelector(".js-isMax");
+    countNumDom = document.querySelector(".js-is-max");
     canvas = document.querySelector("#bg_bubble");
     resize();
     Bubble(window, document, 20, 7);

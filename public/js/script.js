@@ -13133,13 +13133,17 @@ exports.insert = function (css) {
 }
 
 },{}],85:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #555;\n  color: #fff;\n  height: 100%; }\n  .admin_inner[data-v-2efafaba] {\n    max-width: 375px;\n    position: absolute;\n    width: 90%;\n    top: 50%;\n    left: 50%;\n    transform: translateX(-50%) translateY(-50%); }\n\n.div[data-v-2efafaba] {\n  margin: 0 0 20px 0; }\n\n.num_title[data-v-2efafaba] {\n  width: 50%;\n  display: inline-block;\n  text-align: center; }\n\n.nowCount[data-v-2efafaba] {\n  display: inline-block;\n  margin: 0 1% 0 0.5%; }\n\n.max_num[data-v-2efafaba] {\n  vertical-align: top; }\n\n.nowCount[data-v-2efafaba],\n.max_num[data-v-2efafaba] {\n  border: none;\n  line-height: 64px;\n  background-color: #000;\n  width: 45%;\n  height: 64px;\n  text-align: center;\n  color: white;\n  font-family: \"digital-7\";\n  font-size: 50px;\n  padding: 2%;\n  border-radius: 10px; }\n\n.toggle_button[data-v-2efafaba]:focus:hover {\n  outline: none; }\n\n.button[data-v-2efafaba],\n.toggle_button[data-v-2efafaba] {\n  appearance: none;\n  -webkit-appearance: none;\n  -ms-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  vertical-align: top;\n  height: 64px;\n  margin: 0;\n  border-radius: 8px;\n  border: 1px solid #888;\n  background-color: #333;\n  text-align: center;\n  line-height: 60px;\n  font-size: 20px;\n  cursor: pointer;\n  transition: 200ms; }\n  .button--stop[data-v-2efafaba],\n  .toggle_button--stop[data-v-2efafaba] {\n    width: 100%; }\n  .button--limit[data-v-2efafaba], .button--congrats[data-v-2efafaba],\n  .toggle_button--limit[data-v-2efafaba],\n  .toggle_button--congrats[data-v-2efafaba] {\n    width: 50%; }\n\n.button[data-v-2efafaba]:active,\n.toggle_button[data-v-2efafaba]:active {\n  height: 62px;\n  margin-top: 2px;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:not(:checked)::after {\n  display: inline;\n  content: attr(data-off-label);\n  color: #888;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:checked::after {\n  display: inline;\n  content: attr(data-on-label);\n  color: #cfc;\n  text-shadow: 0px 0px 10px #cfc, 0px 0px 20px #cfc, 0px 0px 30px #cfc;\n  transition: 400ms; }\n\n.toggle_button[data-v-2efafaba]:active::after {\n  transition: none; }\n\n.button--reset[data-v-2efafaba] {\n  width: 100%; }\n\n.button--hele[data-v-2efafaba] {\n  width: 100%; }\n\n.button--reset[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  color: #f77;\n  text-shadow: 0px 0px 10px #f77, 0px 0px 20px #f77;\n  transition: none; }\n\n.button--hele[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  color: #99f;\n  text-shadow: 0px 0px 10px #99f, 0px 0px 20px #99f;\n  transition: none; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".admin[data-v-2efafaba] {\n  background-color: #555;\n  color: #fff;\n  height: 100%; }\n  .admin_inner[data-v-2efafaba] {\n    max-width: 375px;\n    position: absolute;\n    width: 90%;\n    top: 50%;\n    left: 50%;\n    transform: translateX(-50%) translateY(-50%); }\n\n.div[data-v-2efafaba] {\n  margin: 0 0 20px 0; }\n  .div2[data-v-2efafaba] {\n    margin: 0 0 5px 0; }\n\n.num_title[data-v-2efafaba] {\n  width: 50%;\n  display: inline-block;\n  text-align: center; }\n\n.nowCount[data-v-2efafaba] {\n  display: inline-block;\n  margin: 0 1% 0 0.5%; }\n\n.max_num[data-v-2efafaba] {\n  vertical-align: top; }\n\n.nowCount[data-v-2efafaba],\n.max_num[data-v-2efafaba] {\n  border: none;\n  line-height: 64px;\n  background-color: #000;\n  width: 45%;\n  height: 64px;\n  text-align: center;\n  color: white;\n  font-family: \"digital-7\";\n  font-size: 50px;\n  padding: 2%;\n  border-radius: 10px; }\n\n.toggle_button[data-v-2efafaba]:focus:hover {\n  outline: none; }\n\n.button[data-v-2efafaba],\n.button_count[data-v-2efafaba],\n.toggle_button[data-v-2efafaba] {\n  appearance: none;\n  -webkit-appearance: none;\n  -ms-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  vertical-align: top;\n  height: 64px;\n  margin: 0;\n  border-radius: 8px;\n  border: 1px solid #888;\n  background-color: #333;\n  text-align: center;\n  line-height: 60px;\n  font-size: 20px;\n  cursor: pointer;\n  transition: 200ms; }\n  .button--stop[data-v-2efafaba],\n  .button_count--stop[data-v-2efafaba],\n  .toggle_button--stop[data-v-2efafaba] {\n    width: 100%; }\n  .button--limit[data-v-2efafaba], .button--congrats[data-v-2efafaba],\n  .button_count--limit[data-v-2efafaba],\n  .button_count--congrats[data-v-2efafaba],\n  .toggle_button--limit[data-v-2efafaba],\n  .toggle_button--congrats[data-v-2efafaba] {\n    width: 50%; }\n\n.button_count[data-v-2efafaba] {\n  width: 25%;\n  height: 32px;\n  line-height: 10px; }\n  .button_count--up[data-v-2efafaba]::after, .button_count--down[data-v-2efafaba]::after {\n    display: inline;\n    content: attr(value);\n    transition: none;\n    color: #888; }\n\n.button[data-v-2efafaba]:active,\n.toggle_button[data-v-2efafaba]:active {\n  height: 62px;\n  margin-top: 2px;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:not(:checked)::after {\n  display: inline;\n  content: attr(data-off-label);\n  color: #888;\n  transition: none; }\n\n.toggle_button[data-v-2efafaba]:checked::after {\n  display: inline;\n  content: attr(data-on-label);\n  color: #cfc;\n  text-shadow: 0px 0px 10px #cfc, 0px 0px 20px #cfc, 0px 0px 30px #cfc;\n  transition: 400ms; }\n\n.toggle_button[data-v-2efafaba]:active::after {\n  transition: none; }\n\n.button--reset[data-v-2efafaba] {\n  width: 100%; }\n\n.button--hele[data-v-2efafaba], .button--super[data-v-2efafaba] {\n  width: 100%; }\n  .button--hele[data-is-active='true'][data-v-2efafaba]::after, .button--super[data-is-active='true'][data-v-2efafaba]::after {\n    color: #99f;\n    text-shadow: 0px 0px 10px #99f, 0px 0px 20px #99f; }\n\n.button--reset[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  color: #f77;\n  text-shadow: 0px 0px 10px #f77, 0px 0px 20px #f77;\n  transition: none; }\n\n.button--hele[data-v-2efafaba]::after, .button--super[data-v-2efafaba]::after {\n  display: inline;\n  content: attr(value);\n  transition: none;\n  color: #888; }")
 ;(function(){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+
+var heleButtonDom = void 0;
+
 exports.default = {
   name: "admin",
   data: function data() {
@@ -13178,23 +13182,66 @@ exports.default = {
     setCountNum: function setCountNum(e) {
       firebase.database().ref("hele").set(parseInt(e.target.value));
     },
+    incrementHele: function incrementHele() {
+      if (this.heleData.isActive) {
+        this.superIncrementHele();
+      }
+    },
     superIncrementHele: function superIncrementHele() {
       var databaseRef = firebase.database().ref("hele");
       databaseRef.transaction(function (searches) {
         if (searches !== undefined) {
           searches = searches + 1;
+          return searches;
         }
-        return searches;
+      });
+    },
+    superDecrementHele: function superDecrementHele() {
+      var databaseRef = firebase.database().ref("hele");
+      databaseRef.transaction(function (searches) {
+        if (searches !== undefined) {
+          if (searches > 0) {
+            searches = searches - 1;
+            return searches;
+          }
+        }
+      });
+    },
+    incrementLimit: function incrementLimit() {
+      var databaseRef = firebase.database().ref("limit/max");
+      databaseRef.transaction(function (searches) {
+        if (searches !== undefined) {
+          searches = searches + 1;
+          return searches;
+        }
+      });
+    },
+    decrementLimit: function decrementLimit() {
+      var databaseRef = firebase.database().ref("limit/max");
+      databaseRef.transaction(function (searches) {
+        if (searches !== undefined) {
+          if (searches > 0) {
+            searches = searches - 1;
+            return searches;
+          }
+        }
       });
     }
   },
-  mounted: function mounted() {}
+  watch: {
+    'heleData.isActive': function heleDataIsActive() {
+      heleButtonDom.setAttribute('data-is-active', this.heleData.isActive);
+    }
+  },
+  mounted: function mounted() {
+    heleButtonDom = document.querySelector('.button--hele');
+  }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"admin_inner"},[_vm._m(0),_c('div',{staticClass:"div div2"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.heleCount),expression:"heleData.heleCount"}],staticClass:"nowCount",attrs:{"type":"number","name":"count","size":"4","maxlength":"4"},domProps:{"value":(_vm.heleData.heleCount)},on:{"blur":function($event){_vm.setCountNum($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData, "heleCount", $event.target.value)}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],staticClass:"max_num",attrs:{"type":"number","name":"limit","size":"3","maxlength":"3"},domProps:{"value":(_vm.heleData.limit.max)},on:{"blur":function($event){_vm.setMaxNum($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}})]),_c('div',{staticClass:"div div3"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isCongrats),expression:"heleData.isCongrats"}],staticClass:"toggle_button toggle_button--congrats",attrs:{"type":"checkbox","data-off-label":"MEDETAKUNAI","data-on-label":"MEDETAI"},domProps:{"checked":Array.isArray(_vm.heleData.isCongrats)?_vm._i(_vm.heleData.isCongrats,null)>-1:(_vm.heleData.isCongrats)},on:{"change":[function($event){var $$a=_vm.heleData.isCongrats,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isCongrats=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isCongrats=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isCongrats", $$c)}},function($event){_vm.toggleCongrats($event)}]}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],staticClass:"toggle_button toggle_button--limit",attrs:{"type":"checkbox","data-off-label":"UNLIMITED","data-on-label":"LIMITED"},domProps:{"checked":Array.isArray(_vm.heleData.limit.isLimited)?_vm._i(_vm.heleData.limit.isLimited,null)>-1:(_vm.heleData.limit.isLimited)},on:{"change":[function($event){var $$a=_vm.heleData.limit.isLimited,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.limit.isLimited=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.limit.isLimited=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData.limit, "isLimited", $$c)}},function($event){_vm.toggleHeleLimit($event)}]}})]),_c('div',{staticClass:"div div4"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isActive),expression:"heleData.isActive"}],staticClass:"toggle_button toggle_button--stop",attrs:{"type":"checkbox","data-off-label":"STOP","data-on-label":"RUN"},domProps:{"checked":Array.isArray(_vm.heleData.isActive)?_vm._i(_vm.heleData.isActive,null)>-1:(_vm.heleData.isActive)},on:{"change":[function($event){var $$a=_vm.heleData.isActive,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isActive=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isActive=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isActive", $$c)}},function($event){_vm.toggleHeleCount($event)}]}})]),_c('div',{staticClass:"div div5"},[_c('button',{staticClass:"button button--reset",attrs:{"type":"submit","value":"RESET"},on:{"click":_vm.resetHeleCount}})]),_c('div',{staticClass:"div div6"},[_c('button',{staticClass:"button button--hele",attrs:{"type":"submit","value":"SUPER HELE"},on:{"click":_vm.superIncrementHele}})])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"admin"},[_c('div',{staticClass:"admin_inner"},[_vm._m(0),_c('div',{staticClass:"div div2"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.heleCount),expression:"heleData.heleCount"}],staticClass:"nowCount",attrs:{"type":"number","name":"count","size":"4","maxlength":"4"},domProps:{"value":(_vm.heleData.heleCount)},on:{"change":function($event){_vm.setCountNum($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData, "heleCount", $event.target.value)}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.max),expression:"heleData.limit.max"}],staticClass:"max_num",attrs:{"type":"number","name":"limit","size":"3","maxlength":"3"},domProps:{"value":(_vm.heleData.limit.max)},on:{"change":function($event){_vm.setMaxNum($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.heleData.limit, "max", $event.target.value)}}})]),_c('div',{staticClass:"div div3"},[_c('button',{staticClass:"button_count button_count--up",attrs:{"type":"submit","value":"▲"},on:{"click":_vm.superIncrementHele}}),_c('button',{staticClass:"button_count button_count--down",attrs:{"type":"submit","value":"▼"},on:{"click":_vm.superDecrementHele}}),_c('button',{staticClass:"button_count button_count--up",attrs:{"type":"submit","value":"▲"},on:{"click":_vm.incrementLimit}}),_c('button',{staticClass:"button_count button_count--down",attrs:{"type":"submit","value":"▼"},on:{"click":_vm.decrementLimit}})]),_c('div',{staticClass:"div div4"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isCongrats),expression:"heleData.isCongrats"}],staticClass:"toggle_button toggle_button--congrats",attrs:{"type":"checkbox","data-off-label":"MEDETAKUNAI","data-on-label":"MEDETAI"},domProps:{"checked":Array.isArray(_vm.heleData.isCongrats)?_vm._i(_vm.heleData.isCongrats,null)>-1:(_vm.heleData.isCongrats)},on:{"change":[function($event){var $$a=_vm.heleData.isCongrats,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isCongrats=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isCongrats=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isCongrats", $$c)}},function($event){_vm.toggleCongrats($event)}]}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.limit.isLimited),expression:"heleData.limit.isLimited"}],staticClass:"toggle_button toggle_button--limit",attrs:{"type":"checkbox","data-off-label":"UNLIMITED","data-on-label":"LIMITED"},domProps:{"checked":Array.isArray(_vm.heleData.limit.isLimited)?_vm._i(_vm.heleData.limit.isLimited,null)>-1:(_vm.heleData.limit.isLimited)},on:{"change":[function($event){var $$a=_vm.heleData.limit.isLimited,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.limit.isLimited=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.limit.isLimited=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData.limit, "isLimited", $$c)}},function($event){_vm.toggleHeleLimit($event)}]}})]),_c('div',{staticClass:"div div5"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.heleData.isActive),expression:"heleData.isActive"}],staticClass:"toggle_button toggle_button--stop",attrs:{"type":"checkbox","data-off-label":"STOP","data-on-label":"RUN"},domProps:{"checked":Array.isArray(_vm.heleData.isActive)?_vm._i(_vm.heleData.isActive,null)>-1:(_vm.heleData.isActive)},on:{"change":[function($event){var $$a=_vm.heleData.isActive,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.heleData.isActive=$$a.concat([$$v]))}else{$$i>-1&&(_vm.heleData.isActive=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.heleData, "isActive", $$c)}},function($event){_vm.toggleHeleCount($event)}]}})]),_c('div',{staticClass:"div div6"},[_c('button',{staticClass:"button button--reset",attrs:{"type":"submit","value":"RESET"},on:{"click":_vm.resetHeleCount}})]),_c('div',{staticClass:"div div7"},[_c('button',{staticClass:"button button--hele",attrs:{"type":"submit","value":"HELE","data-is-active":"false"},on:{"click":_vm.incrementHele}})])])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"div1"},[_c('div',{staticClass:"num_title"},[_vm._v("CURRENT HELE")]),_c('div',{staticClass:"num_title"},[_vm._v("MAX HELE")])])}]
 __vue__options__._scopeId = "data-v-2efafaba"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13205,7 +13252,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-2efafaba", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-2efafaba", __vue__options__)
+    hotAPI.reload("data-v-2efafaba", __vue__options__)
   }
 })()}
 },{"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],86:[function(require,module,exports){
@@ -13283,7 +13330,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../lib/Bubble.js":89,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".hele_own_count[data-v-0bc86c38] {\n  font-family: \"digital-7\";\n  font-size: 150px;\n  color: white;\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-100%);\n  width: 80%;\n  text-align: center; }\n  .hele_own_count[data-ismax=\"true\"][data-v-0bc86c38] {\n    color: red; }\n  .hele_own_count_shadow[data-v-0bc86c38] {\n    color: rgba(128, 128, 128, 0.3); }\n  .hele_own_count_bg[data-v-0bc86c38] {\n    position: absolute;\n    width: 70%;\n    height: 150px;\n    background-color: black;\n    border-radius: 15px;\n    max-width: 262.5px;\n    transform: translateX(-50%) translateY(-130%); }\n\n.hele_button[data-v-0bc86c38] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(10%) translateX(-50%);\n  -webkit-tap-highlight-color: transparent; }\n  .hele_button_cap[data-v-0bc86c38] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-0bc86c38] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-0bc86c38] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }\n  .hele_button_flash[data-v-0bc86c38] {\n    background-image: url(\"./img/hele_flash3.png\");\n    background-size: contain;\n    background-position: center;\n    width: 640px;\n    height: 640px;\n    left: 50%;\n    top: 50%;\n    position: absolute;\n    transform: translateX(-50%) translateY(-42%);\n    display: none;\n    pointer-events: none; }\n    .hele_button_flash[data-push=\"true\"][data-v-0bc86c38] {\n      display: block;\n      animation: flash 0.8s ease 0s;\n      animation-fill-mode: forwards; }\n\n@keyframes flash {\n  0% {\n    opacity: 0; }\n  10% {\n    opacity: 0.3; }\n  90% {\n    opacity: 0.3; }\n  100% {\n    opacity: 0; } }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".hele_own_count[data-v-0bc86c38] {\n  font-family: \"digital-7\";\n  font-size: 150px;\n  color: white;\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-100%);\n  width: 80%;\n  text-align: center; }\n  .hele_own_count[data-is-max=\"true\"][data-v-0bc86c38] {\n    color: red; }\n  .hele_own_count_shadow[data-v-0bc86c38] {\n    color: rgba(128, 128, 128, 0.3); }\n  .hele_own_count_bg[data-v-0bc86c38] {\n    position: absolute;\n    width: 70%;\n    height: 150px;\n    background-color: black;\n    border-radius: 15px;\n    max-width: 262.5px;\n    transform: translateX(-50%) translateY(-130%); }\n\n.hele_button[data-v-0bc86c38] {\n  width: 100%;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translateY(10%) translateX(-50%);\n  -webkit-tap-highlight-color: transparent; }\n  .hele_button_cap[data-v-0bc86c38] {\n    width: 215px;\n    height: 103px;\n    background-image: url(\"./img/hele_button.png\");\n    background-size: contain;\n    background-position: center;\n    margin: 0 auto -53px; }\n    .hele_button_cap[data-push=\"true\"][data-v-0bc86c38] {\n      transform: translateY(5px); }\n  .hele_button_base[data-v-0bc86c38] {\n    width: 285px;\n    height: 134.5px;\n    margin: 0 auto;\n    background-image: url(\"./img/hele_base.png\");\n    background-size: contain;\n    background-position: center;\n    position: relative; }\n  .hele_button_flash[data-v-0bc86c38] {\n    background-image: url(\"./img/hele_flash3.png\");\n    background-size: contain;\n    background-position: center;\n    width: 640px;\n    height: 640px;\n    left: 50%;\n    top: 50%;\n    position: absolute;\n    transform: translateX(-50%) translateY(-42%);\n    display: none;\n    pointer-events: none; }\n    .hele_button_flash[data-push=\"true\"][data-v-0bc86c38] {\n      display: block;\n      animation: flash 0.8s ease 0s;\n      animation-fill-mode: forwards; }\n\n@keyframes flash {\n  0% {\n    opacity: 0; }\n  10% {\n    opacity: 0.3; }\n  90% {\n    opacity: 0.3; }\n  100% {\n    opacity: 0; } }")
 ;(function(){
 "use strict";
 
@@ -13501,15 +13548,15 @@ exports.default = {
     "heleData.ownHeleCount": function heleDataOwnHeleCount() {
       if (this.heleData.limit.isLimited) {
         if (this.heleData.limit.max <= this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "true");
+          countNumDom.setAttribute("data-is-max", "true");
         } else if (this.heleData.limit.max > this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "false");
+          countNumDom.setAttribute("data-is-max", "false");
         }
       } else if (!this.heleData.limit.isLimited) {
         if (this.heleData.defaultMax <= this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "true");
+          countNumDom.setAttribute("data-is-max", "true");
         } else if (this.heleData.defaultMax > this.heleData.ownHeleCount) {
-          countNumDom.setAttribute("data-isMax", "false");
+          countNumDom.setAttribute("data-is-max", "false");
         }
       }
     }
@@ -13518,7 +13565,7 @@ exports.default = {
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSoundss(omedetouPath);
     pushAnimationDom = document.querySelectorAll(".js-push");
-    countNumDom = document.querySelector(".js-isMax");
+    countNumDom = document.querySelector(".js-is-max");
     canvas = document.querySelector("#bg_bubble");
     resize();
     (0, _Bubble2.default)(window, document, 20, 7);
@@ -13528,7 +13575,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('canvas',{attrs:{"id":"bg_bubble","width":"1280","height":"960"}}),_c('div',{staticClass:"hele_own_count hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count hele_own_count js-isMax",attrs:{"data-isMax":"false"}},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"heleButton"},[_c('canvas',{attrs:{"id":"bg_bubble","width":"1280","height":"960"}}),_c('div',{staticClass:"hele_own_count hele_own_count_bg"}),(_vm.counterLength == 1)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("8")]):_vm._e(),(_vm.counterLength == 2)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("88")]):_vm._e(),(_vm.counterLength == 3)?_c('div',{staticClass:"hele_own_count hele_own_count_shadow"},[_vm._v("888")]):_vm._e(),_c('div',{staticClass:"hele_own_count hele_own_count js-is-max",attrs:{"data-is-max":"false"}},[_vm._v(_vm._s(_vm.heleData.ownHeleCount))]),_c('div',{staticClass:"hele_button",on:{"click":_vm.incrementHele}},[_c('div',{staticClass:"hele_button_cap js-push",attrs:{"data-push":"false"}}),_c('div',{staticClass:"hele_button_base"})]),_c('div',{staticClass:"hele_button_flash js-push",attrs:{"data-push":"false"}})])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-0bc86c38"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -13628,7 +13675,7 @@ document.documentElement.addEventListener("touchstart", function (event) {
 var lastTouchEnd = 0;
 document.documentElement.addEventListener("touchend", function (event) {
   var now = new Date().getTime();
-  if (now - lastTouchEnd <= 100) {
+  if (now - lastTouchEnd <= 200) {
     event.preventDefault();
   }
   lastTouchEnd = now;

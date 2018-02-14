@@ -5,18 +5,24 @@
       .num_title CURRENT HELE
       .num_title MAX HELE
     .div.div2
-      // div.nowCount {{ heleData.heleCount}}
-      input.nowCount(type="number" name="count" size="4" maxlength="4" v-model='heleData.heleCount' v-on:blur='setCountNum($event)')
-      input.max_num(type="number" name="limit" size="3" maxlength="3" v-model='heleData.limit.max' v-on:blur='setMaxNum($event)')
+      input.nowCount(type="number" name="count" size="4" maxlength="4" v-model='heleData.heleCount' v-on:change='setCountNum($event)')
+      input.max_num(type="number" name="limit" size="3" maxlength="3" v-model='heleData.limit.max' v-on:change='setMaxNum($event)')
     .div.div3
+      button.button_count.button_count--up(type='submit' value='▲' v-on:click='superIncrementHele')
+      button.button_count.button_count--down(type='submit' value='▼' v-on:click='superDecrementHele')
+      button.button_count.button_count--up(type='submit' value='▲' v-on:click='incrementLimit')
+      button.button_count.button_count--down(type='submit' value='▼' v-on:click='decrementLimit')
+    .div.div4
       input.toggle_button.toggle_button--congrats(type="checkbox" data-off-label="MEDETAKUNAI" data-on-label="MEDETAI" v-model='heleData.isCongrats' v-on:change="toggleCongrats($event)")
       input.toggle_button.toggle_button--limit(type="checkbox" data-off-label="UNLIMITED" data-on-label="LIMITED" v-model='heleData.limit.isLimited' v-on:change='toggleHeleLimit($event)')
-    .div.div4
-      input.toggle_button.toggle_button--stop(type="checkbox" data-off-label="STOP" data-on-label="RUN" v-model='heleData.isActive' v-on:change='toggleHeleCount($event)')
     .div.div5
-      button.button.button--reset(type="submit" value="RESET" v-on:click="resetHeleCount")
+      input.toggle_button.toggle_button--stop(type="checkbox" data-off-label="STOP" data-on-label="RUN" v-model='heleData.isActive' v-on:change='toggleHeleCount($event)')
     .div.div6
-      button.button.button--hele(type="submit" value="SUPER HELE" v-on:click="superIncrementHele")
+      button.button.button--reset(type="submit" value="RESET" v-on:click="resetHeleCount")
+    .div.div7
+      button.button.button--hele(type="submit" value="HELE" data-is-active='false' v-on:click="incrementHele")
+    //- .div.div7
+    //-  button.button.button--super(type="submit" value="SUPER HELE" data-is-active='true' v-on:click="superIncrementHele")
 </template>
 
 <style lang="scss" scoped>
@@ -36,6 +42,9 @@
 }
 .div {
   margin: 0 0 20px 0;
+  &2{
+    margin: 0 0 5px 0;
+  }
 }
 .num_title {
   width: 50%;
@@ -68,6 +77,7 @@
   outline: none;
 }
 .button,
+.button_count,
 .toggle_button {
   appearance: none;
   -webkit-appearance: none;
@@ -91,6 +101,18 @@
   &--limit,
   &--congrats {
     width: 50%;
+  }
+}
+
+.button_count{
+  width:25%;
+  height:32px;
+  line-height: 10px;
+  &--up::after,&--down::after{
+    display: inline;
+    content: attr(value);
+    transition: none;
+    color: #888;
   }
 }
 
@@ -122,8 +144,12 @@
   &--reset {
     width: 100%;
   }
-  &--hele {
+  &--hele,&--super {
     width: 100%;
+    &[data-is-active='true']::after{
+      color: #99f;
+      text-shadow: 0px 0px 10px #99f, 0px 0px 20px #99f;
+    }
   }
 }
 .button--reset::after {
@@ -133,16 +159,17 @@
   text-shadow: 0px 0px 10px #f77, 0px 0px 20px #f77;
   transition: none;
 }
-.button--hele::after {
+.button--hele::after, .button--super::after{
   display: inline;
   content: attr(value);
-  color: #99f;
-  text-shadow: 0px 0px 10px #99f, 0px 0px 20px #99f;
   transition: none;
+  color: #888;
 }
 </style>
 
 <script>
+let heleButtonDom;
+
 export default {
   name: "admin",
   data() {
@@ -207,16 +234,59 @@ export default {
         .ref("hele")
         .set(parseInt(e.target.value));
     },
+    incrementHele() {
+      if(this.heleData.isActive){
+        this.superIncrementHele();
+      }
+    },
     superIncrementHele() {
       const databaseRef = firebase.database().ref(`hele`);
       databaseRef.transaction(function(searches) {
         if (searches !== undefined) {
           searches = searches + 1;
+          return searches;
         }
-        return searches;
+      });
+    },
+    superDecrementHele() {
+      const databaseRef = firebase.database().ref(`hele`);
+      databaseRef.transaction(function(searches) {
+        if (searches !== undefined) {
+          if(searches > 0){
+            searches = searches - 1;
+            return searches;
+          }
+        }
+      });
+    },
+    incrementLimit() {
+      const databaseRef = firebase.database().ref(`limit/max`);
+      databaseRef.transaction(function(searches) {
+        if (searches !== undefined) {
+          searches = searches + 1;
+          return searches;
+        }
+      });
+    },
+    decrementLimit() {
+      const databaseRef = firebase.database().ref(`limit/max`);
+      databaseRef.transaction(function(searches) {
+        if (searches !== undefined) {
+          if(searches > 0){
+            searches = searches - 1;
+            return searches;
+          }
+        }
       });
     }
   },
-  mounted: function() {}
+  watch: {
+    'heleData.isActive': function(){
+      heleButtonDom.setAttribute('data-is-active', this.heleData.isActive);
+    }
+  },
+  mounted: function() {
+    heleButtonDom = document.querySelector('.button--hele');
+  }
 };
 </script>

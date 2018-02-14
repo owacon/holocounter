@@ -98,7 +98,7 @@ document.documentElement.addEventListener(
   "touchend",
   function(event) {
     var now = new Date().getTime();
-    if (now - lastTouchEnd <= 100) {
+    if (now - lastTouchEnd <= 200) {
       event.preventDefault();
     }
     lastTouchEnd = now;
