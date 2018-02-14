@@ -7,7 +7,7 @@
 .root {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: fixed;
   // background: linear-gradient(#168bba, #36b9d7, #a8e7fa);
   background: linear-gradient(#6789f7, #36b9d7, #a8e7fa);
 }
@@ -98,7 +98,7 @@ document.documentElement.addEventListener(
   "touchend",
   function(event) {
     var now = new Date().getTime();
-    if (now - lastTouchEnd <= 200) {
+    if (now - lastTouchEnd <= 50) {
       event.preventDefault();
     }
     lastTouchEnd = now;

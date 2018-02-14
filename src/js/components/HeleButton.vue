@@ -14,6 +14,11 @@
 
 <style lang="scss" scoped>
 @import "config";
+.heleButton{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .hele_own_count {
   font-family: "digital-7";
   font-size: 150px;

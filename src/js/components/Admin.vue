@@ -8,10 +8,10 @@
       input.nowCount(type="number" name="count" size="4" maxlength="4" v-model='heleData.heleCount' v-on:change='setCountNum($event)')
       input.max_num(type="number" name="limit" size="3" maxlength="3" v-model='heleData.limit.max' v-on:change='setMaxNum($event)')
     .div.div3
-      button.button_count.button_count--up(type='submit' value='▲' v-on:click='superIncrementHele')
-      button.button_count.button_count--down(type='submit' value='▼' v-on:click='superDecrementHele')
-      button.button_count.button_count--up(type='submit' value='▲' v-on:click='incrementLimit')
-      button.button_count.button_count--down(type='submit' value='▼' v-on:click='decrementLimit')
+      .button_count.button_count--up(type='submit' value='▲' v-on:click='superIncrementHele')
+      .button_count.button_count--down(type='submit' value='▼' v-on:click='superDecrementHele')
+      .button_count.button_count--up(type='submit' value='▲' v-on:click='incrementLimit')
+      .button_count.button_count--down(type='submit' value='▼' v-on:click='decrementLimit')
     .div.div4
       input.toggle_button.toggle_button--congrats(type="checkbox" data-off-label="MEDETAKUNAI" data-on-label="MEDETAI" v-model='heleData.isCongrats' v-on:change="toggleCongrats($event)")
       input.toggle_button.toggle_button--limit(type="checkbox" data-off-label="UNLIMITED" data-on-label="LIMITED" v-model='heleData.limit.isLimited' v-on:change='toggleHeleLimit($event)')
@@ -28,8 +28,10 @@
 <style lang="scss" scoped>
 @import "config";
 .admin {
+  position: relative;
   background-color: #555;
   color: #fff;
+  width: 100%;
   height: 100%;
   &_inner {
     max-width: 375px;
@@ -41,19 +43,20 @@
   }
 }
 .div {
-  margin: 0 0 20px 0;
+  margin: 0 auto 20px;
   &2{
-    margin: 0 0 5px 0;
+    margin: 0 auto 5px;
   }
 }
 .num_title {
   width: 50%;
   display: inline-block;
   text-align: center;
+  font-weight: bold;
 }
 .nowCount {
   display: inline-block;
-  margin:0 1% 0 0.5%;
+  margin:0 2% 0 0;
 }
 .max_num {
   vertical-align: top;
@@ -61,9 +64,10 @@
 .nowCount,
 .max_num {
   border: none;
+  box-sizing:border-box;
   line-height: 64px;
   background-color: #000;
-  width: 45%;
+  width: 49%;
   height: 64px;
   text-align: center;
   color: white;
@@ -107,12 +111,14 @@
 .button_count{
   width:25%;
   height:32px;
-  line-height: 10px;
+  box-sizing:border-box;
+  line-height: 29px;
   &--up::after,&--down::after{
     display: inline;
     content: attr(value);
     transition: none;
     color: #888;
+    vertical-align: bottom;
   }
 }
 
