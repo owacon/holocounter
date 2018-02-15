@@ -24,12 +24,18 @@
   }
   
   .corner {
-    width: 40vw;
-    height: 40vw;
+    @include pc-layout {
+      width: 20vw;
+      height: 20vw;
+    }
+    @include sp-layout {
+      width: 40vw;
+      height: 40vw;
+    }
     background-image: url('./img/corner.png');
     background-size: contain;
     position: absolute;
-    &--1{
+    &--1 {
       right: 0;
     }
     &--2 {
@@ -47,8 +53,15 @@
   }
   
   .hele_own_count {
+    @include pc-layout {
+      font-size: 20vw;
+      width: 30vw;
+    }
+    @include sp-layout {
+      font-size: 40vw;
+      width: 70vw;
+    }
     font-family: "digital-7";
-    font-size: 40vw;
     color: white;
     // background-color: #000;
     display: block;
@@ -56,7 +69,6 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
-    width: 80%;
     text-align: center;
     &[data-is-max="true"] {
       color: red;
@@ -65,27 +77,44 @@
       color: rgba(gray, 0.3);
     }
     &_bg {
+      @include pc-layout {
+        width: 40vw;
+        height: 20vw;
+        border-radius: 2vw;
+      }
+      @include sp-layout {
+        width: 70vw;
+        height: 40vw;
+        border-radius: 4vw;
+      }
       position: absolute;
-      width: 70vw;
-      height: 40vw;
       background-color: black;
-      border-radius: 4vw;
       // max-width: 262.5px;
       transform: translateX(-50%) translateY(-130%);
     }
   }
   
   .hele_button {
-    width: 100vw;
-    height: 45vw;
+    @include pc-layout {
+      width: 30vw;
+      height: 13.5vw;
+      top: 50%;
+      left: 50%;
+      transform: translateY(10%) translateX(-50%);
+    }
+    @include sp-layout {
+      width: 100vw;
+      height: 45vw;
+      top: 50%;
+      left: 50%;
+      transform: translateY(10%) translateX(-50%);
+    }
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(10%) translateX(-50%);
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0,
+    0,
+    0,
+    0);
     &_cap {
-      width: 52.5vw;
-      height: 206 / 430 * 52.5vw;
       background-image: url("./img/hele_button.png");
       background-size: 100% auto;
       background-position: center;
@@ -93,13 +122,33 @@
       margin: 0 auto;
       margin-bottom: -13vw;
       pointer-events: none;
+      @include pc-layout {
+        width: 22.5vw;
+        height: 206 / 430 * 22.5vw;
+        margin-bottom: -5vw;
+      }
+      @include sp-layout {
+        width: 52.5vw;
+        height: 206 / 430 * 52.5vw;
+      }
       &[data-push="true"] {
-        transform: translateY(5px);
+        @include pc-layout {
+          transform: translateY(1vw);
+        }
+        @include sp-layout {
+          transform: translateY(1.5vw);
+        }
       }
     }
     &_base {
-      width: 70vw;
-      height: 269 / 570 * 70vw;
+      @include pc-layout {
+        width: 30vw;
+        height: 269 / 570 * 30vw;
+      }
+      @include sp-layout {
+        width: 70vw;
+        height: 269 / 570 * 70vw;
+      }
       margin: 0 auto;
       background-image: url("./img/hele_base.png");
       background-size: 100% auto;
@@ -109,11 +158,17 @@
       pointer-events: none;
     }
     &_flash {
+      @include pc-layout {
+        width: 100vw;
+        height: 100vw;
+      }
+      @include sp-layout {
+        width: 100vh;
+        height: 100vh;
+      }
       background-image: url("./img/hele_flash3.png");
       background-size: contain;
       background-position: center;
-      width: 100vh;
-      height: 100vh;
       left: 50%;
       top: 50%;
       position: absolute;
@@ -162,11 +217,6 @@
   let pushAnimationDom;
   let countNumDom;
   let canvas;
-  
-  const resize = () => {
-    canvas.setAttribute("width", window.innerWidth);
-    canvas.setAttribute("height", window.innerHeight);
-  };
   
   export default {
     name: "hele-button",
@@ -293,7 +343,6 @@
       pushAnimationDom = document.querySelectorAll(".js-push");
       countNumDom = document.querySelector(".js-is-max");
       canvas = document.querySelector("#bg_bubble");
-      resize();
     }
   };
 </script>
