@@ -13252,7 +13252,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-2efafaba", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2efafaba", __vue__options__)
+    hotAPI.rerender("data-v-2efafaba", __vue__options__)
   }
 })()}
 },{"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],86:[function(require,module,exports){
@@ -13326,7 +13326,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-8162d060", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8162d060", __vue__options__)
+    hotAPI.rerender("data-v-8162d060", __vue__options__)
   }
 })()}
 },{"../lib/Bubble.js":89,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],87:[function(require,module,exports){
@@ -13605,7 +13605,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-0bc86c38", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0bc86c38", __vue__options__)
+    hotAPI.rerender("data-v-0bc86c38", __vue__options__)
   }
 })()}
 },{"axios":1,"babel-runtime/core-js/get-iterator":26,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],88:[function(require,module,exports){
@@ -13714,7 +13714,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-68332284", __vue__options__)
   } else {
-    hotAPI.reload("data-v-68332284", __vue__options__)
+    hotAPI.rerender("data-v-68332284", __vue__options__)
   }
 })()}
 },{"./Admin.vue":85,"./HeleButton.vue":87,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],89:[function(require,module,exports){
@@ -13879,20 +13879,5 @@ new _vue2.default({
         return h(_Root2.default);
     }
 });
-// el: document.getElementById('root'),
-// data: {
-//     currentRouter: window.location.pathname,
-//     ownHeleCount: 0
-// },
-// computed: {
-//     ViewComponent() {
-//         return router[this.currentRouter] || NotFound
-//     }
-// },
-// render(h){
-//     console.log(this.ViewComponent);
-//     return h(this.ViewComponent);
-// }
-// });
 
 },{"./components/Admin.vue":85,"./components/Counter.vue":86,"./components/HeleButton.vue":87,"./components/Root.vue":88,"vue":83,"vue-router":82}]},{},[90]);

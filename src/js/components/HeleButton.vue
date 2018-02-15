@@ -54,7 +54,6 @@
   }
   
   .hele_own_count {
-    // background-color: #000;
     position: absolute;
     bottom: -6%;
     left: 50%;
@@ -69,7 +68,6 @@
       color: white;
       display: block;
       text-align: center;
-      // vertical-align: middle;
       line-height: 1;
       vertical-align: baseline;
       transform: translateX(-50%);
@@ -81,17 +79,6 @@
       }
     }
     &_bg {
-      //   @include pc-layout {
-      //   font-size: 20vw;
-      //   width: 30vw;
-      //   transform: translateX(-50%) translateY(-30vw);
-      // }
-      // @include sp-layout {
-      //   font-size: 40vw;
-      //   height: 40vw;
-      //   width: 70vw;
-      //   transform: translateX(-50%) translateY(-60vw);
-      // }
       @include pc-layout {
         width: 40vw;
         height: 20vw;

@@ -36,19 +36,3 @@ new Vue({
     router: router,
     render: (h) => h(Root)
 })
-// el: document.getElementById('root'),
-// data: {
-//     currentRouter: window.location.pathname,
-//     ownHeleCount: 0
-// },
-// computed: {
-//     ViewComponent() {
-//         return router[this.currentRouter] || NotFound
-//     }
-// },
-// render(h){
-//     console.log(this.ViewComponent);
-//     return h(this.ViewComponent);
-// }
-// });
-

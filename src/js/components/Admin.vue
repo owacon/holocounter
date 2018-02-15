@@ -21,8 +21,6 @@
       button.button.button--reset(type="submit" value="RESET" v-on:click="resetHeleCount")
     .div.div7
       button.button.button--hele(type="submit" value="HELE" data-is-active='false' v-on:click="incrementHele")
-    //- .div.div7
-    //-  button.button.button--super(type="submit" value="SUPER HELE" data-is-active='true' v-on:click="superIncrementHele")
 </template>
 
 <style lang="scss" scoped>

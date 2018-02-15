@@ -8,7 +8,6 @@
   width: 100%;
   height: 100%;
   position: fixed;
-  // background: linear-gradient(#168bba, #36b9d7, #a8e7fa);
   background: linear-gradient(#6789f7, #36b9d7, #a8e7fa);
 }
 </style>

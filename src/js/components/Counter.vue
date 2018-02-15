@@ -19,7 +19,6 @@
   &_bg {
     width: 100%;
     height: 100%;
-    // background: linear-gradient(#168bba, #36b9d7, #a8e7fa);
     background: linear-gradient(#6789f7, #36b9d7, #a8e7fa);
     position: relative;
   }
@@ -45,7 +44,6 @@
     font-family: "digital-7";
     font-size: 26vw;
     color: white;
-    // background-color: #000;
     display: block;
     position: absolute;
     top: 50%;
@@ -82,17 +80,6 @@ const resize = () => {
   canvas.setAttribute("width", window.innerWidth);
   canvas.setAttribute("height", window.innerHeight);
 };
-
-// let timer = 0;
-
-// window.onresize = function() {
-//   if (timer > 0) {
-//     clearTimeout(timer);
-//   }
-//   timer = setTimeout(() => {
-//     resize();
-//   }, 200);
-// };
 
 export default {
   name: "counter",
