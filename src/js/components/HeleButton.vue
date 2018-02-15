@@ -1,6 +1,9 @@
 <template lang="pug">
 .heleButton
-  canvas#bg_bubble(width='1280' height='960')
+  .corner.corner--1
+  .corner.corner--2
+  .corner.corner--3
+  .corner.corner--4
   .hele_own_count.hele_own_count_bg
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
   .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
@@ -18,6 +21,29 @@
     position: relative;
     width: 100%;
     height: 100%;
+  }
+  
+  .corner {
+    width: 40vw;
+    height: 40vw;
+    background-image: url('./img/corner.png');
+    background-size: contain;
+    position: absolute;
+    &--1{
+      right: 0;
+    }
+    &--2 {
+      bottom: 0;
+      right: 0;
+      transform: rotateX(180deg);
+    }
+    &--3 {
+      bottom: 0;
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+    &--4 {
+      transform: rotateY(180deg);
+    }
   }
   
   .hele_own_count {
@@ -58,27 +84,29 @@
     transform: translateY(10%) translateX(-50%);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     &_cap {
-      width: 60vw;
-      height: 206 / 430 * 60vw;
+      width: 52.5vw;
+      height: 206 / 430 * 52.5vw;
       background-image: url("./img/hele_button.png");
       background-size: 100% auto;
       background-position: center;
       background-repeat: no-repeat;
       margin: 0 auto;
-      margin-bottom: -15vw;
+      margin-bottom: -13vw;
+      pointer-events: none;
       &[data-push="true"] {
         transform: translateY(5px);
       }
     }
     &_base {
-      width: 80vw;
-      height: 269 / 570 * 80vw;
+      width: 70vw;
+      height: 269 / 570 * 70vw;
       margin: 0 auto;
       background-image: url("./img/hele_base.png");
       background-size: 100% auto;
       background-position: center;
       background-repeat: no-repeat;
       position: relative;
+      pointer-events: none;
     }
     &_flash {
       background-image: url("./img/hele_flash3.png");
@@ -118,8 +146,6 @@
 
 <script>
   import axios from "axios";
-  
-  import Bubble from "../lib/Bubble.js";
   
   const omedetouPath = [
     "./sound/omedetou/misato.mp3",
@@ -268,7 +294,6 @@
       countNumDom = document.querySelector(".js-is-max");
       canvas = document.querySelector("#bg_bubble");
       resize();
-      Bubble(window, document, 20, 7);
     }
   };
 </script>
