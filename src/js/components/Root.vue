@@ -27,7 +27,7 @@ export default {
     return {
       heleData: {
         ownHeleCount: 0,
-        heleCount: "Loading...",
+        heleCount: "---",
         isActive: false,
         isCongrats: false,
         defaultMax: 999,
