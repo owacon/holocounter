@@ -5,10 +5,11 @@
   .corner.corner--3
   .corner.corner--4
   .hele_own_count.hele_own_count_bg
-  .hele_own_count.hele_own_count_shadow(v-if='counterLength == 1') 8
-  .hele_own_count.hele_own_count_shadow(v-if='counterLength == 2') 88
-  .hele_own_count.hele_own_count_shadow(v-if='counterLength == 3') 888
-  .hele_own_count.hele_own_count.js-is-max(data-is-max='false') {{ heleData.ownHeleCount }}
+    .hele_own_count_bg--inner
+      p.hele_own_count.hele_own_count_num.hele_own_count_num--shadow(v-if='counterLength == 1') 8
+      p.hele_own_count.hele_own_count_num.hele_own_count_num--shadow(v-if='counterLength == 2') 88
+      p.hele_own_count.hele_own_count_num.hele_own_count_num--shadow(v-if='counterLength == 3') 888
+      p.hele_own_count.hele_own_count_num.hele_own_count.js-is-max(data-is-max='false') {{ heleData.ownHeleCount }}
   .hele_button(v-on:click='incrementHele')
     .hele_button_cap.js-push(data-push='false')
     .hele_button_base
@@ -53,45 +54,77 @@
   }
   
   .hele_own_count {
-    @include pc-layout {
-      font-size: 20vw;
-      width: 30vw;
-    }
-    @include sp-layout {
-      font-size: 40vw;
-      width: 70vw;
-    }
-    font-family: "digital-7";
-    color: white;
     // background-color: #000;
-    display: block;
     position: absolute;
-    top: 50%;
+    bottom: -6%;
     left: 50%;
-    transform: translateX(-50%) translateY(-100%);
-    text-align: center;
-    &[data-is-max="true"] {
-      color: red;
-    }
-    &_shadow {
-      color: rgba(gray, 0.3);
+    &_num {
+      @include pc-layout {
+        font-size: 20vw;
+      }
+      @include sp-layout {
+        font-size: 40vw;
+      }
+      font-family: "digital-7";
+      color: white;
+      display: block;
+      text-align: center;
+      // vertical-align: middle;
+      line-height: 1;
+      vertical-align: baseline;
+      transform: translateX(-50%);
+      &[data-is-max="true"] {
+        color: red;
+      }
+      &--shadow {
+        color: rgba(gray, 0.3);
+      }
     }
     &_bg {
+      //   @include pc-layout {
+      //   font-size: 20vw;
+      //   width: 30vw;
+      //   transform: translateX(-50%) translateY(-30vw);
+      // }
+      // @include sp-layout {
+      //   font-size: 40vw;
+      //   height: 40vw;
+      //   width: 70vw;
+      //   transform: translateX(-50%) translateY(-60vw);
+      // }
       @include pc-layout {
         width: 40vw;
         height: 20vw;
         border-radius: 2vw;
+        transform: translateX(-50%) translateY(-26vw);
       }
       @include sp-layout {
         width: 70vw;
         height: 40vw;
         border-radius: 4vw;
+        transform: translateX(-50%) translateY(-48vw);
       }
-      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
       background-color: black;
-      // max-width: 262.5px;
-      transform: translateX(-50%) translateY(-130%);
+      &--inner {
+        position: relative;
+        @include pc-layout {
+          width: 40vw;
+          height: 20vw;
+          border-radius: 2vw;
+        }
+        @include sp-layout {
+          width: 70vw;
+          height: 40vw;
+          border-radius: 4vw;
+        }
+      }
     }
+  }
+  .android {
+    bottom: 12%;
   }
   
   .hele_button {
@@ -340,6 +373,11 @@
     mounted: function() {
       this.getHeleSound("./sound/hele.mp3");
       this.getOmedetouSoundss(omedetouPath);
+      if (navigator.userAgent.indexOf('Android') > 0){
+        for(let dom of document.querySelectorAll('.hele_own_count_num')){
+          dom.classList.add('android');
+        }
+      }
       pushAnimationDom = document.querySelectorAll(".js-push");
       countNumDom = document.querySelector(".js-is-max");
       canvas = document.querySelector("#bg_bubble");
