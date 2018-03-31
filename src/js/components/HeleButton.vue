@@ -110,6 +110,7 @@
       }
     }
   }
+  
   .android {
     bottom: 12%;
   }
@@ -223,12 +224,12 @@
   import axios from "axios";
   
   const omedetouPath = [
-    "./sound/omedetou/misato.mp3",
-    "./sound/omedetou/asuka.mp3",
-    "./sound/omedetou/rei.mp3",
-    "./sound/omedetou/kensuke.mp3",
-    "./sound/omedetou/touji.mp3"
+    "./sound/omedetou/kagaya.mp3",
+    "./sound/omedetou/nakamura.mp3",
+    "./sound/omedetou/tsutsumi01.mp3",
+    "./sound/omedetou/onuma.mp3"
   ];
+  let selectedOmedetou;
   const omedetouSounds = [];
   let heleSound;
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -267,8 +268,8 @@
             console.log("err:", err);
           });
       },
-      getOmedetouSoundss(array, buffer) {
-        for (let path of omedetouPath) {
+      getOmedetouSounds(array, buffer) {
+        for (let path of selectedOmedetou) {
           axios
             .get(path, {
               responseType: "arraybuffer"
@@ -338,6 +339,20 @@
             val.setAttribute("data-push", "false");
           }
         }, 80);
+      },
+      random(array, num) {
+        const a = array;
+        const t = [];
+        const r = [];
+        let l = a.length;
+        let n = num < l ? num : l;
+        while (n-- > 0) {
+          const i = Math.random() * l | 0;
+          r[n] = t[i] || a[i];
+          l--;
+          t[i] = t[l] || a[l];
+        }
+        return r;
       }
     },
     watch: {
@@ -358,10 +373,12 @@
       }
     },
     mounted: function() {
+      selectedOmedetou = this.random(omedetouPath, 2);
+      console.log(selectedOmedetou);
       this.getHeleSound("./sound/hele.mp3");
-      this.getOmedetouSoundss(omedetouPath);
-      if (navigator.userAgent.indexOf('Android') > 0){
-        for(let dom of document.querySelectorAll('.hele_own_count_num')){
+      this.getOmedetouSounds(selectedOmedetou);
+      if (navigator.userAgent.indexOf('Android') > 0) {
+        for (let dom of document.querySelectorAll('.hele_own_count_num')) {
           dom.classList.add('android');
         }
       }
