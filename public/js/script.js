@@ -13348,7 +13348,7 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var omedetouPath = ["./sound/omedetou/kagaya.mp3", "./sound/omedetou/nakamura.mp3", "./sound/omedetou/tsutsumi01.mp3", "./sound/omedetou/onuma.mp3"];
+var omedetouPath = ["./sound/omedetou/kagaya.mp3", "./sound/omedetou/nakamura.mp3", "./sound/omedetou/tsutsumi01.mp3", "./sound/omedetou/onuma.mp3", "./sound/omedetou/ikebe.mp3", "./sound/omedetou/saru.mp3"];
 var selectedOmedetou = void 0;
 var omedetouSounds = [];
 var heleSound = void 0;
@@ -13573,7 +13573,6 @@ exports.default = {
   },
   mounted: function mounted() {
     selectedOmedetou = this.random(omedetouPath, 2);
-    console.log(selectedOmedetou);
     this.getHeleSound("./sound/hele.mp3");
     this.getOmedetouSounds(selectedOmedetou);
     if (navigator.userAgent.indexOf('Android') > 0) {
@@ -13622,7 +13621,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-5025aa70", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-5025aa70", __vue__options__)
+    hotAPI.reload("data-v-5025aa70", __vue__options__)
   }
 })()}
 },{"axios":1,"babel-runtime/core-js/get-iterator":26,"vue":83,"vue-hot-reload-api":81,"vueify/lib/insert-css":84}],88:[function(require,module,exports){

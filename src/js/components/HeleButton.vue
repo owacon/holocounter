@@ -227,7 +227,9 @@
     "./sound/omedetou/kagaya.mp3",
     "./sound/omedetou/nakamura.mp3",
     "./sound/omedetou/tsutsumi01.mp3",
-    "./sound/omedetou/onuma.mp3"
+    "./sound/omedetou/onuma.mp3",
+    "./sound/omedetou/ikebe.mp3",
+    "./sound/omedetou/saru.mp3"
   ];
   let selectedOmedetou;
   const omedetouSounds = [];
@@ -374,7 +376,6 @@
     },
     mounted: function() {
       selectedOmedetou = this.random(omedetouPath, 2);
-      console.log(selectedOmedetou);
       this.getHeleSound("./sound/hele.mp3");
       this.getOmedetouSounds(selectedOmedetou);
       if (navigator.userAgent.indexOf('Android') > 0) {
